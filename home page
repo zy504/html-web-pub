@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>myclothes store</title>
+</head>
+  <nav>
+    <div class="logo">my clothes </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">shop</a></li>
+      <li><a href="#">new arrival</a></li>
+      <li><a href="#">feedback</a></li>
+      <li><a href="#">contact us </a></li>
+      <li><a href="#">about us</a></li>
+    </ul>
+  </nav>
+
+ 
+  <section class="banner">
+    <div class="banner-item">
+      <h3>Women's Fashion</h3>
+      <button>Shop Now</button>
+    </div>
+    <div class="banner-item">
+      <h3>Men's Fashion</h3>
+      <button>Shop Now</button>
+    </div>
+    <div class="banner-item">
+      <h3>Kid's Fashion</h3>
+      <button>Shop Now</button>
+    </div>
+    <div class="banner-item">
+      <h3>Cosmetics</h3>
+      <button>Shop Now</button>
+    </div>
+    <div class="banner-item">
+      <h3>Accessories</h3>
+      <button>Shop Now</button>
+    </div>
+  </section>
+
+  
+  <section class="products">
+    <div class="product coming-soon">
+      <img src="https://images.unsplash.com/photo-1600185365483-26d7b8e2c5e2?auto=format&fit=crop&w=400&q=80" alt="Blazer">
+      <h4>Buttoned Tweed Blazer</h4>
+      <p>$59.00</p>
+	  <p> coming soon </p>
+    </div>
+    <div class="product coming-soon">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1a5?auto=format&fit=crop&w=400&q=80" alt="Skirt">
+      <h4>Flowy Striped Skirt</h4>
+      <p>$49.00</p>
+	  <p> coming soon </p>
+    </div>
+    <div class="product coming-soon">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1a5?auto=format&fit=crop&w=400&q=80" alt="T-shirt">
+      <h4>Cotton T-shirt</h4>
+	  <p>$39.00</p>
+      <p>coming soon</p>
+    </div>
+    <div class="product coming-soon">
+      <img src="https://images.unsplash.com/photo-1600185365483-26d7b8e2c5e2?auto=format&fit=crop&w=400&q=80" alt="Shirt">
+      <h4>Slim Striped Pocket Shirt</h4>
+      <p>$59.00</p>
+	  <p>coming soon</p>
+    </div>
+  </section>
+  
+   <section>
+    <h2>Join Our Member!!!</h2>
+    <p>Get updates on new arrivals and exclusive deals.</p>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+</section>
+
+<footer>
+    &copy; 2025 My Clothes. All rights reserved.
+ </footer>
+
+</body>
+</html>
