@@ -1,83 +1,144 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>myclothes store</title>
-<link href="https://zy504.github.io/html-web-pub/css.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Clothes Store - Fashion for Everyone</title>
 </head>
-  <nav>
-    <div class="logo">my clothes </div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">shop</a></li>
-      <li><a href="#">new arrival</a></li>
-      <li><a href="#">feedback</a></li>
-      <li><a href="#">contact us </a></li>
-      <li><a href="#">about us</a></li>
-    </ul>
+<link href ="homepagecss.css" rel="stylesheet">
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">My Clothes</div>
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link">Home</a></li>
+        <li><a href="#" class="nav-link">Shop</a></li>
+        <li><a href="#" class="nav-link">New Arrivals</a></li>
+        <li><a href="#" class="nav-link">Feedback</a></li>
+        <li><a href="#" class="nav-link">Contact</a></li>
+        <li><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </div>
   </nav>
 
+  <header class="hero-section">
+    <h1 class="hero-title">Fashion for Everyone</h1>
+    <p class="hero-subtitle">will never regret your choice </p>
+  </header>
+
+  <main class="container">
  
-  <section class="banner">
-    <div class="banner-item">
-      <h3>Women's Fashion</h3>
-      <button>Shop Now</button>
-    </div>
-    <div class="banner-item">
-      <h3>Men's Fashion</h3>
-      <button>Shop Now</button>
-    </div>
-    <div class="banner-item">
-      <h3>Kid's Fashion</h3>
-      <button>Shop Now</button>
-    </div>
-    <div class="banner-item">
-      <h3>Cosmetics</h3>
-      <button>Shop Now</button>
-    </div>
-    <div class="banner-item">
-      <h3>Accessories</h3>
-      <button>Shop Now</button>
-    </div>
-  </section>
+    <section class="category-section">
+      <h2 class="section-title">Shop by Category</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-icon">👗</div>
+          <h3 class="category-title">Women's Fashion</h3>
+          <button class="category-btn">Shop Now</button>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">👔</div>
+          <h3 class="category-title">Men's Fashion</h3>
+          <button class="category-btn">Shop Now</button>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">🧸</div>
+          <h3 class="category-title">Kids' Fashion</h3>
+          <button class="category-btn">Shop Now</button>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">💄</div>
+          <h3 class="category-title">Cosmetics</h3>
+          <button class="category-btn">Shop Now</button>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">👜</div>
+          <h3 class="category-title">Accessories</h3>
+          <button class="category-btn">Shop Now</button>
+        </div>
+      </div>
+    </section>
 
-  
-  <section class="products">
-    <div class="product coming-soon">
-      <img src="https://images.unsplash.com/photo-1600185365483-26d7b8e2c5e2?auto=format&fit=crop&w=400&q=80" alt="Blazer">
-      <h4>Buttoned Tweed Blazer</h4>
-      <p>$59.00</p>
-	  <p> coming soon </p>
-    </div>
-    <div class="product coming-soon">
-      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1a5?auto=format&fit=crop&w=400&q=80" alt="Skirt">
-      <h4>Flowy Striped Skirt</h4>
-      <p>$49.00</p>
-	  <p> coming soon </p>
-    </div>
-    <div class="product coming-soon">
-      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1a5?auto=format&fit=crop&w=400&q=80" alt="T-shirt">
-      <h4>Cotton T-shirt</h4>
-	  <p>$39.00</p>
-      <p>coming soon</p>
-    </div>
-    <div class="product coming-soon">
-      <img src="https://images.unsplash.com/photo-1600185365483-26d7b8e2c5e2?auto=format&fit=crop&w=400&q=80" alt="Shirt">
-      <h4>Slim Striped Pocket Shirt</h4>
-      <p>$59.00</p>
-	  <p>coming soon</p>
-    </div>
-  </section>
-  
-   <section>
-    <h2>Join Our Member!!!</h2>
-    <p>Get updates on new arrivals and exclusive deals.</p>
-    <input type="email" placeholder="Enter your email">
-    <button>Subscribe</button>
-</section>
+    
+    <section class="coming-soon-section">
+      <h2 class="section-title">Coming Soon</h2>
+      <div class="products-grid">
+        <article class="product-card coming-soon">
+          <div class="coming-soon-badge">Coming Soon</div>
+          <img src="" 
+               alt="Elegant buttoned tweed blazer in neutral tones" 
+               class="product-image" 
+               loading="lazy">
+          <div class="product-info">
+            <h3 class="product-title">Buttoned Tweed Blazer</h3>
+            <p class="product-price">$59.00</p>
+            <button class="notify-btn">Notify Me</button>
+          </div>
+        </article>
 
-<footer>
-    &copy; 2025 My Clothes. All rights reserved.
- </footer>
+        <article class="product-card coming-soon">
+          <div class="coming-soon-badge">Coming Soon</div>
+          <img src="" 
+               alt="Flowy striped skirt in summer fabric" 
+               class="product-image" 
+               loading="lazy">
+          <div class="product-info">
+            <h3 class="product-title">Flowy Striped Skirt</h3>
+            <p class="product-price">$49.00</p>
+            <button class="notify-btn">Notify Me</button>
+          </div>
+        </article>
 
+        <article class="product-card coming-soon">
+          <div class="coming-soon-badge">Coming Soon</div>
+          <img src="" 
+               alt="Premium cotton t-shirt in classic white" 
+               class="product-image" 
+               loading="lazy">
+          <div class="product-info">
+            <h3 class="product-title">Cotton T-Shirt</h3>
+            <p class="product-price">$39.00</p>
+            <button class="notify-btn">Notify Me</button>
+          </div>
+        </article>
+
+        <article class="product-card coming-soon">
+          <div class="coming-soon-badge">Coming Soon</div>
+          <img src="" 
+               alt="Slim fit striped pocket shirt in navy blue" 
+               class="product-image" 
+               loading="lazy">
+          <div class="product-info">
+            <h3 class="product-title">Slim Striped Pocket Shirt</h3>
+            <p class="product-price">$59.00</p>
+            <button class="notify-btn">Notify Me</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="newsletter-section">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">Join Our Members!</h2>
+        <p class="newsletter-subtitle">Get updates on new arrivals and exclusive deals</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email address" class="newsletter-input">
+          <button class="newsletter-btn">Subscribe</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2025 My Clothes. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
