@@ -7,19 +7,29 @@
   <link href="Stylecss.css" rel="stylesheet">
 </head>
 <body>
-  <nav>
-    <div class="Elogo"></div>
-	<image src="https://i.postimg.cc/D09fR0f0/619dc955-0299-480d-a968-6ca502e0995e.jpg" alt="My clothes" style="width: 90px; height: auto; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">shop</a></li>
-      <li><a href="#">new arrival</a></li>
-      <li><a href="#">feedback</a></li>
-      <li><a href="#">contact us</a></li>
-      <li><a href="#">about us</a></li>
-    </ul>
+ <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">My Clothes</div>
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link">Home</a></li>
+        <li><a href="#" class="nav-link">Shop</a></li>
+        <li><a href="#" class="nav-link">New Arrivals</a></li>
+        <li><a href="#" class="nav-link">Feedback</a></li>
+        <li><a href="#" class="nav-link">Contact</a></li>
+        <li><a href="#" class="nav-link">About</a></li>
+      </ul>
+    </div>
   </nav>
+<footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2025 My Clothes. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+      </div>
+    </div>
+  </footer>
 
   <div class="Econtainer">
     <div class="Efilters">
