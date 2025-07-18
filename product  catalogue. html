@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product catalog</title>
+  <link href="Stylecss.css" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="Elogo"></div>
+	<image src="https://i.postimg.cc/D09fR0f0/619dc955-0299-480d-a968-6ca502e0995e.jpg" alt="My clothes" style="width: 90px; height: auto; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
 
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">shop</a></li>
+      <li><a href="#">new arrival</a></li>
+      <li><a href="#">feedback</a></li>
+      <li><a href="#">contact us</a></li>
+      <li><a href="#">about us</a></li>
+    </ul>
+  </nav>
+
+  <div class="Econtainer">
+    <div class="Efilters">
+		
+      <h3>Category</h3>
+      <div id="cat">
+        <label><input type="radio" id="Tops" value="tops" name="cat" />Tops</label>
+        <label><input type="radio" id="Bottoms" value="bottoms" name="cat" />Bottoms</label>
+        <label><input type="radio" id="Cosmetics" value="cosmetics" name="cat" />Cosmetics</label>
+        <label><input type="radio" id="Accessories" value="accessories" name="cat" />Accessories</label>
+      </div>
+
+      <h4>Size</h4>
+      <div id="EcheckBoxs">
+        <label><input type="checkbox" id="s" name="size" value="s" />S</label>
+        <label><input type="checkbox" id="m" name="size" value="m" />M</label>
+        <label><input type="checkbox" id="l" name="size" value="l" />L</label>
+        <label><input type="checkbox" id="xl" name="size" value="xl" />XL</label>
+      </div>
+	  
+	  <select>
+	   <option>Gender</option>
+        <option>Men</option>
+        <option>Woman</option>
+		<option>Kids</option>
+	  </select>
+
+      <select>
+        <option>Color</option>
+        <option>black</option>
+        <option>Blue</option>
+        <option>White</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Pink</option>
+        <option>Grey</option>
+      </select>
+
+      <select>
+        <option>Style</option>
+        <option>Casual</option>
+        <option>Sporty</option>
+        <option>Basics</option>
+        <option>Work</option>
+        <option>Street</option>
+      </select>
+
+      <h4>Price Range</h4>
+      <div class="Eslider-container">
+        <input type="range" min="1" max="100" value="10" class="Eslider">
+        <div class="Eslider-labels">
+          <span>S$1</span>
+          <span>S$25</span>
+          <span>S$50</span>
+          <span>S$75</span>
+          <span>S$100</span>
+        </div>
+      </div>
+
+      <h4>Sort By</h4>
+      <select id="item">
+        <option value="">Select option</option>
+        <option value="l">Price Low To High</option>
+        <option value="h">Price High To Low</option>
+      </select>
+    </div>
+
+    <div class="Eproduct-grid">
+      <div class="Eproduct-card">
+        <a href="#product1">
+          <img src="https://img.ltwebstatic.com/v4/j/spmp/2025/03/21/21/1742543962bd92f13d8ad0d4d345dd7f05030d6abb.webp" alt="Jeans">
+        </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Baggy Jeans</div>
+          <div class="Eprice">S$8.49</div>
+          <div class="Erating">⭐ 4.87 (100+)</div>
+          <div class="Esize-options">
+            <label>Size:</label>
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+		  <div class="EGender">Men</div>
+          <div class="EColor">Blue</div>
+          <div class="Etag">#Street</div>
+          <a href="" class="Eadd-to-cart">Add to Cart</a>
+
+        </div>
+      </div>
+
+      <div class="Eproduct-card">
+	  <a href="#product2">
+        <img src="https://img.ltwebstatic.com/images3_pi/2024/03/28/ea/17116030626317222aeca830cfd19dde3a24854d17.webp" alt="Black Tee">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Teen Boys'Casual Tee</div>
+          <div class="Eprice">S$12.90</div>
+		  <div class="Erating">⭐ 4.40 (500+)</div>
+		   <div class="Esize-options">
+            <label>Size:</label>
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+		  <div class="EGender">Men</div>
+		  <div class="EColor">Black</div>
+          <div class="Etag">#Casual</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="Eproduct-card">
+	  <a href="#product3">
+        <img src="https://img.ltwebstatic.com/images3_pi/2025/02/21/35/174012865140ce0a65cfa625ace99e95b5c3d0d9e8.webp" alt="">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Coolane Girls Summer Jersey</div>
+          <div class="Eprice">S$9.99</div>
+		   <div class="Erating">⭐ 4.90 (1000+)</div>
+		   <div class="Esize-options">
+            <label>Size:</label>
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+		  <div class="EGender">Woman</div>
+		  <div class="EColor">Blue</div>
+          <div class="Etag">#Street</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="Eproduct-card">
+	  <a href="#product4">
+        <img src="https://img.ltwebstatic.com/v4/j/pi/2025/07/10/b0/1752143015ad8b37088d731792383a3026f4f864b2.webp" alt="Graphic Tee">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Graphic Tee</div>
+          <div class="Eprice">S$6.99</div>
+		  <div class="Erating">⭐ 4.00 (359+)</div>
+		  <div class="Esize-options">
+            <label>Size:</label>
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+		  <div class="EGender">Kids</div>
+		  <div class="EColor">Grey</div>
+          <div class="Etag">#Casual</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+	  <div class="Eproduct-card">
+	  <a href="#product5">
+        <img src="https://img.ltwebstatic.com/images3_spmp/2024/08/10/d4/1723275536cd4817ff77d2749b2d84d494323b2ae0.webp" alt="Sport Wear">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Sport Wear</div>
+          <div class="Eprice">S$8.99</div>
+		  <div class="Erating">⭐ 3.90 (759+)</div>
+		  <div class="Esize-options">
+            <label>Size:</label>
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+		  <div class="EGender">Woman</div>
+		  <div class="EColor">Black</div>
+          <div class="Etag">#Sporty</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+	  <div class="Eproduct-card">
+	  <a href="#product6">
+        <img src="https://img.ltwebstatic.com/images3_spmp/2024/06/03/36/17174022103bbe6dc085143c4ea85deb77510019b1.webp" alt="Rings">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Rings</div>
+          <div class="Eprice">S$4.99</div>
+		  <div class="Erating">⭐ 4.30 (2500+)</div>
+		  <div class="EColor">Gold/Silver</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+	  <div class="Eproduct-card">
+	  <a href="#product7">
+        <img src="https://img.ltwebstatic.com/v4/j/spmp/2025/05/27/40/17483264704873714e5df4067a7a909adb564a8422.webp" alt="Cosmetics">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Cosmetics</div>
+          <div class="Eprice">S$10.69</div>
+		  <div class="Erating">⭐ 4.90 (10059+)</div>
+		  <div class="Esize-options">
+            <label>Size:</label>
+            <button>10pcs</button>
+            <button>20pcs</button>
+            <button>30pcs</button>
+            <button>40pcs</button>
+          </div>
+          <div class="Etag">Cosmetics</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+	  <div class="Eproduct-card">
+	  <a href="#product8">
+        <img src="https://img.ltwebstatic.com/v4/j/pi/2025/05/22/c8/1747879008dcf6211d78eaec192d634eb3270aae48.webp" alt="Graphic">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Graphic Tee</div>
+          <div class="Eprice">S$9.99</div>
+		  <div class="Erating">⭐ 4.99 (959+)</div>
+		  <div class="Esize-options">
+            <label>Size:</label>
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+          </div>
+		  <div class="EGender">Kids</div>
+		  <div class="EColor">Black</div>
+          <div class="Etag">#Casual</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+	  <div class="Eproduct-card">
+	  <a href="#product9">
+        <img src="https://img.ltwebstatic.com/images3_spmp/2025/01/01/0e/1735728254a7b8b2dc991a5afc846fa2c5272f597b.webp" alt="Accessories">
+	  </a>
+        <div class="Eproduct-info">
+          <div class="Eproduct-title">Accessories</div>
+          <div class="Eprice">S$3.99</div>
+		  <div class="Erating">⭐ 4.70 (159+)</div>
+		  <div class="Esize-options">
+            <label>Size:</label>
+            <button>Pistol-70cm</button>
+            <button>Stars and Moon-70cm</button>
+            <button>US Dollar-70cm</button>
+            <button>Love-70cm</button>
+          </div>
+          <div class="Etag">#Accessories</div>
+          <button class="Eadd-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="product1" class="Edetail-view">
+    <h2>Baggy Jeans</h2>
+    <p> Y2K Vintage style Men's Black Retro Washed Loose Wide Leg Baggy Jeans Straight Leg Loose Jeans, Perfect Gift For Husband, Boyfriend</p>
+    <p class="Eprice">S$8.49</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product2" class="Edetail-view">
+    <h2>Black T-shirt</h2>
+    <p>Men's Oversized Los Angeles Distressed Print T-Shirt, Vintage Style</p>
+    <p class="Eprice">S$12.90</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product3" class="Edetail-view">
+    <h2>Jersey</h2>
+    <p>Coolane Women's Summer Drop Shoulder Oversized V-Neck Football Jersey T-Shirt With Letter Print,Couple Same Style</p>
+    <p class="Eprice">S$9.99</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product4" class="Edetail-view">
+    <h2>Graphic Tee</h2>
+    <p>Young Boys'Casual Minimalist Round Neck T-Shirt, Suitable For Summer</p>
+    <p class="Eprice">S$6.99</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product5" class="Edetail-view">
+    <h2>Sport Wear</h2>
+    <p>FWH Women's Fashion Yoga Outdoor Running Commuting Dating Sun Protection Essential Stretch Comfortable Back-Shaping Abdominal-Toning Slimming Fitness Retro High-End Street Elegant Sportswear Running Workout Wear Zipper Stretch Minimalist Fashion Sexy Fitted Long-Sleeve Yoga Jacket</p>
+    <p class="Eprice">S$8.99</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product6" class="Edetail-view">
+    <h2>Rings</h2>
+    <p>Elegant Lady, Couple Ring, Fashion Simple Chain Design Inlaid Artificial Rhinestones, Suitable For Daily Party Accessories Collocation</p>
+    <p class="Eprice">S$4.99</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product7" class="Edetail-view">
+    <h2>Cosmetics</h2>
+    <p>40pcs Professional Makeup Tool Set, Large Capacity Makeup Bag Set, Including: 1 Makeup Bag, 20 Makeup Brushes, 1 Headband, 2 Wristbands, 4 Water Drop Makeup Sponges, 4 Triangle Powder Puffs, 4 Mini Water Drop Makeup Sponges, 4 Mini Finger Makeup Puffs, 1 Cleaning Tool, Suitable For Liquid Makeup, Powder And Concealer, Travel Makeup Brush Set Suitable For Women And Girls.</p>
+    <p class="Eprice">S$10.69</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product8" class="Edetail-view">
+    <h2>Graphic Tee</h2>
+    <p> Young Boy Shark Print Casual Crew Neck Short Sleeve T-Shirt, Summers Young Boys T Shirts</p>
+    <p class="Eprice">S$9.99</p>
+    <a href="#" class="Eclose">Close</a>
+  </div>
+  <div id="product9" class="Edetail-view">
+    <h2>Accessories</h2>
+    <p>1pc Fashion Hip-Hop Style Stainless Steel Long Necklace With Pendant Charms, Including Poker, Dollar, Gun Pendant, Suitable For Gift, Valentine's Day, Graduation, Father's Day, Men's Jewelry, Chain Necklace</p>
+    <p class="Eprice"></p>
+	<a href="#" class="Eclose">Close</a>   
+  </div>
+  
+
+  
+</body>
+</html>
