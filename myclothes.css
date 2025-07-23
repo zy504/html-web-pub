@@ -796,7 +796,7 @@
       padding: 0 20px;
     }
 
-    #searchInput {
+    #EsearchInput {
       padding: 12px 20px;
       width: 100%;
       max-width: 500px;
@@ -807,7 +807,7 @@
       transition: border-color 0.3s;
     }
 
-    #searchInput:focus {
+    #EsearchInput:focus {
       border-color: #e680e6;
     }
 
