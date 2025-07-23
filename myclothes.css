@@ -639,9 +639,7 @@
       background: var(--accent-color);
       transform: translateY(-2px);
     }
-
-    
-    .Ecart-icon {
+   .Ecart-icon {
       position: relative;
       cursor: pointer;
       padding: 8px;
@@ -771,6 +769,18 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
+    .Esocial-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
     .Econtainer {
       max-width: 1200px;
       margin: 0 auto;
@@ -1091,4 +1101,3 @@
         right: -100px;
       }
     
-  
