@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Clothes Store - Registration</title>
+  </head>
+<body class="zz-body">
+  <nav class="zz-navbar">
+    <div class="zz-nav-container">
+      <a href="index.html" class="zz-logo">My Clothes</a>
+      <ul class="zz-nav-menu">
+        <li><a href="index.html" class="zz-nav-link">Home</a></li>
+        <li><a href="product.html" class="zz-nav-link">Shop</a></li>
+        <li><a href="new arrivals.html" class="zz-nav-link">New Arrivals</a></li>
+        <li><a href="#" class="zz-nav-link">Feedback</a></li>
+        <li><a href="#" class="zz-nav-link">Contact</a></li>
+        <li><a href="#" class="zz-nav-link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="zz-registration-container">
+    <div class="zz-registration-header">
+      <h1 class="zz-registration-title">Join My Clothes Family</h1>
+      <p class="zz-registration-subtitle">Create your account and discover fashion that never disappoints</p>
+    </div>
+
+    <div class="zz-registration-form-container">
+      <div id="zzSuccessMessage" class="zz-success-message"></div>
+      <div id="zzErrorMessage" class="zz-error-message"></div>
+      
+      <form id="zzRegistrationForm" class="zz-registration-form">
+        <div class="zz-form-grid">
+          <div class="zz-form-group">
+            <label for="zzFirstName" class="zz-form-label">First Name</label>
+            <input type="text" id="zzFirstName" name="firstName" class="zz-form-input" required>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzLastName" class="zz-form-label">Last Name</label>
+            <input type="text" id="zzLastName" name="lastName" class="zz-form-input" required>
+          </div>
+          
+          <div class="zz-form-group zz-full-width">
+            <label for="zzEmail" class="zz-form-label">Email Address</label>
+            <input type="email" id="zzEmail" name="email" class="zz-form-input" required>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzPhone" class="zz-form-label">Phone Number</label>
+            <input type="tel" id="zzPhone" name="phone" class="zz-form-input" required>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzGender" class="zz-form-label">Gender</label>
+            <select id="zzGender" name="gender" class="zz-form-select" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="non-binary">Non-Binary</option>
+              <option value="prefer-not-to-say">Prefer Not to Say</option>
+            </select>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzBirthDate" class="zz-form-label">Date of Birth</label>
+            <input type="date" id="zzBirthDate" name="birthDate" class="zz-form-input" required>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzCountry" class="zz-form-label">Country</label>
+            <select id="zzCountry" name="country" class="zz-form-select" required>
+              <option value="">Select Country</option>
+              <option value="singapore">Singapore</option>
+              <option value="malaysia">Malaysia</option>
+              <option value="indonesia">Indonesia</option>
+              <option value="thailand">Thailand</option>
+              <option value="philippines">Philippines</option>
+              <option value="vietnam">Vietnam</option>
+              <option value="usa">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="australia">Australia</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="zz-form-group zz-full-width">
+            <label for="zzAddress" class="zz-form-label">Address</label>
+            <textarea id="zzAddress" name="address" class="zz-form-textarea" placeholder="Enter your full address" required></textarea>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzPassword" class="zz-form-label">Password</label>
+            <input type="password" id="zzPassword" name="password" class="zz-form-input" required>
+            <div class="zz-password-strength" id="zzPasswordStrength">
+              <div class="zz-strength-bar" id="zzStrengthBar"></div>
+              <div class="zz-strength-text" id="zzStrengthText"></div>
+            </div>
+          </div>
+          
+          <div class="zz-form-group">
+            <label for="zzConfirmPassword" class="zz-form-label">Confirm Password</label>
+            <input type="password" id="zzConfirmPassword" name="confirmPassword" class="zz-form-input" required>
+          </div>
+          
+          <div class="zz-form-group zz-full-width">
+            <label for="zzFashionInterests" class="zz-form-label">Fashion Interests (Optional)</label>
+            <select id="zzFashionInterests" name="fashionInterests" class="zz-form-select">
+              <option value="">Select your main interest</option>
+              <option value="womens-fashion">Women's Fashion</option>
+              <option value="mens-fashion">Men's Fashion</option>
+              <option value="kids-fashion">Kids' Fashion</option>
+              <option value="cosmetics">Cosmetics & Beauty</option>
+              <option value="accessories">Accessories</option>
+              <option value="all">All Categories</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="zz-checkbox-group">
+          <input type="checkbox" id="zzNewsletter" name="newsletter" class="zz-checkbox" checked>
+          <label for="zzNewsletter" class="zz-checkbox-label">
+            Subscribe to our newsletter for exclusive deals and new arrivals
+          </label>
+        </div>
+        
+        <div class="zz-checkbox-group">
+          <input type="checkbox" id="zzTerms" name="terms" class="zz-checkbox" required>
+          <label for="zzTerms" class="zz-checkbox-label">
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+        
+        <button type="submit" class="zz-submit-btn" id="zzSubmitBtn">Create Account</button>
+      </form>
+      
+      <div class="zz-login-link">
+        <p>Already have an account? <a href="#">Sign In</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="zz-footer">
+    <div class="zz-footer-content">
+      <p class="zz-footer-text">&copy; 2025 My Clothes. All rights reserved.</p>
+      <div class="zz-social-links">
+        <a href="#" class="zz-social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="zz-social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="zz-social-link" aria-label="Twitter">🐦</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Store registered users in memory
+    let registeredUsers = [];
+
+    // Form validation functions
+    function zzIsValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function zzIsValidPhone(phone) {
+      const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+      return phoneRegex.test(phone.replace(/\s/g, ''));
+    }
+
+    function zzCheckPasswordStrength(password) {
+      const strength = {
+        score: 0,
+        text: '',
+        class: ''
+      };
+
+      if (password.length >= 8) strength.score++;
+      if (/[a-z]/.test(password)) strength.score++;
+      if (/[A-Z]/.test(password)) strength.score++;
+      if (/[0-9]/.test(password)) strength.score++;
+      if (/[^A-Za-z0-9]/.test(password)) strength.score++;
+
+      switch(strength.score) {
+        case 0:
+        case 1:
+          strength.text = 'Very Weak';
+          strength.class = 'zz-strength-weak';
+          break;
+        case 2:
+          strength.text = 'Weak';
+          strength.class = 'zz-strength-weak';
+          break;
+        case 3:
+          strength.text = 'Fair';
+          strength.class = 'zz-strength-fair';
+          break;
+        case 4:
+          strength.text = 'Good';
+          strength.class = 'zz-strength-good';
+          break;
+        case 5:
+          strength.text = 'Strong';
+          strength.class = 'zz-strength-strong';
+          break;
+      }
+
+      return strength;
+    }
+
+    function zzShowMessage(message, type) {
+      const messageElement = document.getElementById(type === 'success' ? 'zzSuccessMessage' : 'zzErrorMessage');
+      const otherElement = document.getElementById(type === 'success' ? 'zzErrorMessage' : 'zzSuccessMessage');
+      
+      otherElement.classList.remove('zz-show');
+      
+      messageElement.textContent = message;
+      messageElement.classList.add('zz-show');
+      
+      setTimeout(() => {
+        messageElement.classList.remove('zz-show');
+      }, 5000);
+    }
+
+    function zzClearErrors() {
+      const inputs = document.querySelectorAll('.zz-form-input, .zz-form-select, .zz-form-textarea');
+      inputs.forEach(input => input.classList.remove('zz-error'));
+    }
+
+    function zzValidateAge(birthDate) {
+      const today = new Date();
+      const birth = new Date(birthDate);
+      const age = today.getFullYear() - birth.getFullYear();
+      const monthDiff = today.getMonth() - birth.getMonth();
+      
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+        age--;
+      }
+      
+      return age >= 13; // Minimum age requirement
+    }
+
+    // Password strength indicator
+    document.getElementById('zzPassword').addEventListener('input', function(e) {
+      const password = e.target.value;
+      const strengthContainer = document.getElementById('zzPasswordStrength');
+      const strengthBar = document.getElementById('zzStrengthBar');
+      const strengthText = document.getElementById('zzStrengthText');
+
+      if (password.length > 0) {
+        strengthContainer.classList.add('zz-show');
+        const strength = zzCheckPasswordStrength(password);
+        
+        strengthBar.className = 'zz-strength-bar ' + strength.class;
+        strengthText.textContent = strength.text;
+        strengthText.className = 'zz-strength-text';
+      } else {
+        strengthContainer.classList.remove('zz-show');
+      }
+    });
+
+    // Form submission handler
+    document.getElementById('zzRegistrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      zzClearErrors();
+      
+      const formData = new FormData(e.target);
+      const userData = {};
+      
+      // Convert FormData to object
+      for (let [key, value] of formData.entries()) {
+        userData[key] = value;
+      }
+      
+      // Validation
+      let hasErrors = false;
+      
+      // Email validation
+      if (!zzIsValidEmail(userData.email)) {
+        document.getElementById('zzEmail').classList.add('zz-error');
+        zzShowMessage('Please enter a valid email address', 'error');
+        hasErrors = true;
+      }
+      
+      // Check if email already exists
+      if (registeredUsers.some(user => user.email.toLowerCase() === userData.email.toLowerCase())) {
+        document.getElementById('zzEmail').classList.add('zz-error');
+        zzShowMessage('This email address is already registered', 'error');
+        hasErrors = true;
+      }
+      
+      // Phone validation
+      if (!zzIsValidPhone(userData.phone)) {
+        document.getElementById('zzPhone').classList.add('zz-error');
+        zzShowMessage('Please enter a valid phone number', 'error');
+        hasErrors = true;
+      }
+      
+      // Age validation
+      if (!zzValidateAge(userData.birthDate)) {
+        document.getElementById('zzBirthDate').classList.add('zz-error');
+        zzShowMessage('You must be at least 13 years old to register', 'error');
+        hasErrors = true;
+      }
+      
+      // Password validation
+      const passwordStrength = zzCheckPasswordStrength(userData.password);
+      if (passwordStrength.score < 3) {
+        document.getElementById('zzPassword').classList.add('zz-error');
+        zzShowMessage('Password is too weak. Please use a stronger password', 'error');
+        hasErrors = true;
+      }
+      
+      // Confirm password validation
+      if (userData.password !== userData.confirmPassword) {
+        document.getElementById('zzConfirmPassword').classList.add('zz-error');
+        zzShowMessage('Passwords do not match', 'error');
+        hasErrors = true;
+      }
+      
+      // Terms acceptance
+      if (!userData.terms) {
+        zzShowMessage('Please accept the Terms of Service and Privacy Policy', 'error');
+        hasErrors = true;
+      }
+      
+      if (hasErrors) return;
+      
+      // Disable submit button
+      const submitBtn = document.getElementById('zzSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating Account...';
+      
+      // Simulate API call
+      setTimeout(() => {
+        // Add user to registered users
+        userData.registrationDate = new Date().toISOString();
+        userData.id = Date.now();
+        registeredUsers.push(userData);
+        
+        // Reset form
+        document.getElementById('zzRegistrationForm').reset();
+        document.getElementById('zzPasswordStrength').classList.remove('zz-show');
+        
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Account';
+        
+        // Show success message
+        zzShowMessage(`Welcome to My Clothes, ${userData.firstName}! Your account has been created successfully. You can now start shopping!`, 'success');
+        
+        // Scroll to top to show success message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        console.log('New user registered:', userData);
+        console.log('Total registered users:', registeredUsers.length);
+      }, 2000);
+    });
+
+   
+    registeredUsers.push(
+      {
+        id: 1,
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john@example.com',
+        registrationDate: '2025-01-25T10:30:00.000Z'
+      },
+      {
+        id: 2,
+        firstName: 'Sarah',
+        lastName: 'Smith',
+        email: 'sarah@example.com',
+        registrationDate: '2025-01-26T14:15:00.000Z'
+      }
+    );
+  </script>
+</body>
+</html>
