@@ -23,7 +23,7 @@
 
   <header class="hero-section">
     <h1 class="hero-title">Fashion for Everyone</h1>
-    <p class="hero-subtitle">will never regret your choice </p>
+    <p class="hero-subtitle">will never regret your choice</p>
   </header>
 
   <main class="container">
@@ -34,27 +34,27 @@
         <div class="category-card">
           <div class="category-icon">👗</div>
           <h3 class="category-title">Women's Fashion</h3>
-          <button class="category-btn">Shop Now</button>
+          <button class="category-btn" onclick="showAlert('Women\'s Fashion coming soon!')">Shop Now</button>
         </div>
         <div class="category-card">
           <div class="category-icon">👔</div>
           <h3 class="category-title">Men's Fashion</h3>
-          <button class="category-btn">Shop Now</button>
+          <button class="category-btn" onclick="showAlert('Men\'s Fashion coming soon!')">Shop Now</button>
         </div>
         <div class="category-card">
           <div class="category-icon">🧸</div>
           <h3 class="category-title">Kids' Fashion</h3>
-          <button class="category-btn">Shop Now</button>
+          <button class="category-btn" onclick="showAlert('Kids\' Fashion coming soon!')">Shop Now</button>
         </div>
         <div class="category-card">
           <div class="category-icon">💄</div>
           <h3 class="category-title">Cosmetics</h3>
-          <button class="category-btn">Shop Now</button>
+          <button class="category-btn" onclick="showAlert('Cosmetics coming soon!')">Shop Now</button>
         </div>
         <div class="category-card">
           <div class="category-icon">👜</div>
           <h3 class="category-title">Accessories</h3>
-          <button class="category-btn">Shop Now</button>
+          <button class="category-btn" onclick="showAlert('Accessories coming soon!')">Shop Now</button>
         </div>
       </div>
     </section>
@@ -65,67 +65,68 @@
       <div class="products-grid">
         <article class="product-card coming-soon">
           <div class="coming-soon-badge">Coming Soon</div>
-          <img src="" 
-               alt="Elegant buttoned tweed blazer in neutral tones" 
-               class="product-image" 
-               loading="lazy">
+          <div class="product-image">🧥</div>
           <div class="product-info">
             <h3 class="product-title">Buttoned Tweed Blazer</h3>
             <p class="product-price">$59.00</p>
-            <button class="notify-btn">Notify Me</button>
+            <button class="notify-btn" onclick="addToNotificationList('Buttoned Tweed Blazer')">Notify Me</button>
           </div>
         </article>
 
         <article class="product-card coming-soon">
           <div class="coming-soon-badge">Coming Soon</div>
-          <img src="" 
-               alt="Flowy striped skirt in summer fabric" 
-               class="product-image" 
-               loading="lazy">
+          <div class="product-image">👗</div>
           <div class="product-info">
             <h3 class="product-title">Flowy Striped Skirt</h3>
             <p class="product-price">$49.00</p>
-            <button class="notify-btn">Notify Me</button>
+            <button class="notify-btn" onclick="addToNotificationList('Flowy Striped Skirt')">Notify Me</button>
           </div>
         </article>
 
         <article class="product-card coming-soon">
           <div class="coming-soon-badge">Coming Soon</div>
-          <img src="" 
-               alt="Premium cotton t-shirt in classic white" 
-               class="product-image" 
-               loading="lazy">
+          <div class="product-image">👕</div>
           <div class="product-info">
             <h3 class="product-title">Cotton T-Shirt</h3>
             <p class="product-price">$39.00</p>
-            <button class="notify-btn">Notify Me</button>
+            <button class="notify-btn" onclick="addToNotificationList('Cotton T-Shirt')">Notify Me</button>
           </div>
         </article>
 
         <article class="product-card coming-soon">
           <div class="coming-soon-badge">Coming Soon</div>
-          <img src="" 
-               alt="Slim fit striped pocket shirt in navy blue" 
-               class="product-image" 
-               loading="lazy">
+          <div class="product-image">👔</div>
           <div class="product-info">
             <h3 class="product-title">Slim Striped Pocket Shirt</h3>
             <p class="product-price">$59.00</p>
-            <button class="notify-btn">Notify Me</button>
+            <button class="notify-btn" onclick="addToNotificationList('Slim Striped Pocket Shirt')">Notify Me</button>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Subscribers List -->
+    <section class="subscribers-section" id="subscribersSection" style="display: none;">
+      <h2 class="section-title">Newsletter Subscribers</h2>
+      <div id="subscribersList"></div>
+    </section>
 
     <section class="newsletter-section">
       <div class="newsletter-content">
         <h2 class="newsletter-title">Join Our Members!</h2>
         <p class="newsletter-subtitle">Get updates on new arrivals and exclusive deals</p>
-        <div class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" class="newsletter-input">
-          <button class="newsletter-btn">Subscribe</button>
-        </div>
+        <form class="newsletter-form" id="newsletterForm">
+          <input 
+            type="email" 
+            placeholder="Enter your email address" 
+            class="newsletter-input" 
+            id="emailInput"
+            required
+          >
+          <button type="submit" class="newsletter-btn" id="subscribeBtn">Subscribe</button>
+        </form>
+        <div id="successMessage" class="success-message"></div>
+        <div id="errorMessage" class="error-message"></div>
       </div>
     </section>
   </main>
@@ -133,6 +134,11 @@
   <footer class="footer">
     <div class="footer-content">
       <p class="footer-text">&copy; 2025 My Clothes. All rights reserved.</p>
+      <p class="footer-text">
+        <button onclick="toggleSubscribersList()" style="background: none; border: none; color: var(--text-color); text-decoration: underline; cursor: pointer;">
+          View Subscribers
+        </button>
+      </p>
       <div class="social-links">
         <a href="#" class="social-link" aria-label="Facebook">📘</a>
         <a href="#" class="social-link" aria-label="Instagram">📷</a>
@@ -140,5 +146,159 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Store subscribers in memory (in a real app, this would be sent to a server)
+    let subscribers = [];
+    let notificationList = [];
+
+    // Email validation function
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Show message function
+    function showMessage(message, type) {
+      const messageElement = document.getElementById(type === 'success' ? 'successMessage' : 'errorMessage');
+      const otherElement = document.getElementById(type === 'success' ? 'errorMessage' : 'successMessage');
+      
+      // Hide other message
+      otherElement.classList.remove('show');
+      
+      // Show current message
+      messageElement.textContent = message;
+      messageElement.classList.add('show');
+      
+      // Hide after 5 seconds
+      setTimeout(() => {
+        messageElement.classList.remove('show');
+      }, 5000);
+    }
+
+    // Newsletter subscription handler
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailInput = document.getElementById('emailInput');
+      const subscribeBtn = document.getElementById('subscribeBtn');
+      const email = emailInput.value.trim();
+      
+      // Remove error styling
+      emailInput.classList.remove('error');
+      
+      // Validate email
+      if (!email) {
+        emailInput.classList.add('error');
+        showMessage('Please enter your email address', 'error');
+        return;
+      }
+      
+      if (!isValidEmail(email)) {
+        emailInput.classList.add('error');
+        showMessage('Please enter a valid email address', 'error');
+        return;
+      }
+      
+      // Check if already subscribed
+      if (subscribers.some(sub => sub.email.toLowerCase() === email.toLowerCase())) {
+        showMessage('This email is already subscribed!', 'error');
+        return;
+      }
+      
+      // Disable button and show loading
+      subscribeBtn.disabled = true;
+      subscribeBtn.textContent = 'Subscribing...';
+      
+      // Simulate API call
+      setTimeout(() => {
+        // Add to subscribers list
+        const subscriber = {
+          email: email,
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString()
+        };
+        
+        subscribers.push(subscriber);
+        
+        // Reset form
+        emailInput.value = '';
+        subscribeBtn.disabled = false;
+        subscribeBtn.textContent = 'Subscribe';
+        
+        // Show success message
+        showMessage(`Thank you! ${email} has been successfully subscribed to our newsletter.`, 'success');
+        
+        // Update subscribers list if visible
+        if (document.getElementById('subscribersSection').style.display !== 'none') {
+          updateSubscribersList();
+        }
+      }, 1000);
+    });
+
+    // Notification list handler
+    function addToNotificationList(productName) {
+      const email = prompt('Enter your email to be notified when ' + productName + ' is available:');
+      
+      if (email && isValidEmail(email)) {
+        const notification = {
+          email: email,
+          product: productName,
+          date: new Date().toLocaleDateString()
+        };
+        
+        notificationList.push(notification);
+        showAlert(`Thank you! We'll notify ${email} when ${productName} becomes available.`);
+      } else if (email) {
+        showAlert('Please enter a valid email address.');
+      }
+    }
+
+    // Show alert function
+    function showAlert(message) {
+      alert(message);
+    }
+
+    // Toggle subscribers list
+    function toggleSubscribersList() {
+      const section = document.getElementById('subscribersSection');
+      if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';
+        updateSubscribersList();
+        section.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        section.style.display = 'none';
+      }
+    }
+
+    // Update subscribers list display
+    function updateSubscribersList() {
+      const listContainer = document.getElementById('subscribersList');
+      
+      if (subscribers.length === 0) {
+        listContainer.innerHTML = '<p style="text-align: center; color: #666;">No subscribers yet.</p>';
+        return;
+      }
+      
+      let html = `<p style="margin-bottom: 1rem; font-weight: 600;">Total Subscribers: ${subscribers.length}</p>`;
+      
+      subscribers.forEach((subscriber, index) => {
+        html += `
+          <div class="subscriber-item">
+            <span class="subscriber-email">${subscriber.email}</span>
+            <span class="subscriber-date">Subscribed on ${subscriber.date}</span>
+          </div>
+        `;
+      });
+      
+      listContainer.innerHTML = html;
+    }
+
+    // Add some demo subscribers for testing
+    subscribers.push(
+      { email: 'john@example.com', date: '1/25/2025', time: '10:30 AM' },
+      { email: 'sarah@example.com', date: '1/26/2025', time: '2:15 PM' }
+    );
+  </script>
 </body>
 </html>
