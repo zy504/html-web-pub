@@ -589,6 +589,408 @@
 
 
 
+ .zz-body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--zz-text-color);
+      background: linear-gradient(135deg, var(--zz-secondary-color), #fafafa);
+      min-height: 100vh;
+    }
+
+    /* Navigation styles matching homepage */
+    .zz-navbar {
+      background: linear-gradient(135deg, var(--zz-primary-color), #f8bbd9);
+      padding: 1rem 2rem;
+      box-shadow: var(--zz-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .zz-nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .zz-logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--zz-accent-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .zz-nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .zz-nav-link {
+      color: var(--zz-text-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+    }
+
+    .zz-nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Registration form styles */
+    .zz-registration-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .zz-registration-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .zz-registration-title {
+      font-size: 2.5rem;
+      color: var(--zz-accent-color);
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: zz-fadeInUp 0.8s ease-out;
+    }
+
+    .zz-registration-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      animation: zz-fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .zz-registration-form-container {
+      background: white;
+      border-radius: var(--zz-border-radius);
+      box-shadow: var(--zz-shadow);
+      padding: 3rem;
+      width: 100%;
+      max-width: 600px;
+      animation: zz-fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .zz-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .zz-form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .zz-form-group.zz-full-width {
+      grid-column: 1 / -1;
+    }
+
+    .zz-form-label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--zz-text-color);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .zz-form-input, .zz-form-select, .zz-form-textarea {
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      background: #f9f9f9;
+    }
+
+    .zz-form-input:focus, .zz-form-select:focus, .zz-form-textarea:focus {
+      outline: none;
+      border-color: var(--zz-accent-color);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .zz-form-input.zz-error, .zz-form-select.zz-error, .zz-form-textarea.zz-error {
+      border-color: #ff4444;
+      background: #fff5f5;
+      animation: zz-shake 0.5s ease-in-out;
+    }
+
+    .zz-form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .zz-checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .zz-checkbox {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--zz-accent-color);
+    }
+
+    .zz-checkbox-label {
+      font-size: 0.9rem;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .zz-checkbox-label a {
+      color: var(--zz-accent-color);
+      text-decoration: none;
+    }
+
+    .zz-checkbox-label a:hover {
+      text-decoration: underline;
+    }
+
+    .zz-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--zz-accent-color), #ff6b9d);
+      color: white;
+      border: none;
+      padding: 1.2rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+    }
+
+    .zz-submit-btn:hover {
+      background: linear-gradient(135deg, #d81b60, #e91e63);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+    }
+
+    .zz-submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .zz-login-link {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+
+    .zz-login-link a {
+      color: var(--zz-accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .zz-login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .zz-success-message, .zz-error-message {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .zz-success-message.zz-show, .zz-error-message.zz-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .zz-success-message {
+      background: #e8f5e8;
+      color: #2e7d32;
+      border: 1px solid #c8e6c9;
+    }
+
+    .zz-error-message {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #ffcdd2;
+    }
+
+    /* Password strength indicator */
+    .zz-password-strength {
+      margin-top: 0.5rem;
+      height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .zz-password-strength.zz-show {
+      opacity: 1;
+    }
+
+    .zz-strength-bar {
+      height: 100%;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      width: 0%;
+    }
+
+    .zz-strength-weak { background: #ff4444; width: 25%; }
+    .zz-strength-fair { background: #ff9800; width: 50%; }
+    .zz-strength-good { background: #2196f3; width: 75%; }
+    .zz-strength-strong { background: #4caf50; width: 100%; }
+
+    .zz-strength-text {
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* Footer styles matching homepage */
+    .zz-footer {
+      background: linear-gradient(135deg, var(--zz-primary-color), #f8bbd9);
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .zz-footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .zz-footer-text {
+      font-size: 1rem;
+      color: var(--zz-text-color);
+      margin-bottom: 1rem;
+    }
+
+    .zz-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .zz-social-link {
+      display: inline-block;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .zz-social-link:hover {
+      background: var(--zz-accent-color);
+      transform: translateY(-2px);
+    }
+
+    /* Animations */
+    @keyframes zz-fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes zz-shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .zz-nav-container {
+        padding: 0 1rem;
+      }
+      
+      .zz-nav-menu {
+        gap: 1rem;
+      }
+      
+      .zz-nav-link {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .zz-registration-container {
+        padding: 0 1rem;
+      }
+      
+      .zz-registration-form-container {
+        padding: 2rem;
+      }
+      
+      .zz-form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .zz-registration-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .zz-registration-form-container {
+        padding: 1.5rem;
+      }
+      
+      .zz-registration-title {
+        font-size: 1.8rem;
+      }
+      
+      .zz-nav-menu {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .zycontainer {
       max-width: 1200px;
