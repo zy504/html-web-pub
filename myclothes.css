@@ -587,7 +587,20 @@
 
 
 
+ :root {
+      --zz-primary-color: #fce4ec;
+      --zz-secondary-color: #f8f8f8;
+      --zz-text-color: #333;
+      --zz-accent-color: #e91e63;
+      --zz-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --zz-border-radius: 10px;
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
  .zz-body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
