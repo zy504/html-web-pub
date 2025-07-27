@@ -3,70 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyClothes - Contact Us</title>
-    <link href="myclothes.css" rel="stylesheet">
+    <title>Contact Us - My Clothes Store</title>
 </head>
-<body >
-<nav class="navbar">
+<link href ="myclothes.css" rel="stylesheet">
+<body>
+  <nav class="navbar">
     <div class="nav-container">
       <div class="logo">My Clothes</div>
       <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="hm4.html" class="nav-link">Home</a></li>
         <li><a href="product.html" class="nav-link">Shop</a></li>
         <li><a href="new arrivals.html" class="nav-link">New Arrivals</a></li>
-         <li><a href="res.html" class="nav-link">join us</a></li>
+        <li><a href="res.html" class="nav-link">Join Us</a></li>
         <li><a href="#" class="nav-link">Feedback</a></li>
-        <li><a href="contact us .html" class="nav-link">Contact</a></li>
-        <li><a href="about us .html" class="nav-link">About</a></li>
+        <li><a href="mj.html" class="nav-link active">Contact</a></li>
+        <li><a href="about us.html" class="nav-link">About</a></li>
       </ul>
     </div>
   </nav>
- 
-    <main class="mjmain-content">
-        <div class="mjcontact-header">
-            <h1>Contact Us</h1>
-            <p>Any questions or remarks? Just write us a message!</p>
-        </div>
-        <div class="mjcontact-form">
-            <form id="mjcontactForm">
-                <div class="mjform-row">
-                    <div class="mjform-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="mjemail" name="email" placeholder="Enter a valid email address" required>
-                    </div>
-                    <div class="mjform-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="mjname" name="name" placeholder="Enter your Name" required>
-                    </div>
-                </div>
-                <div class="mjform-group">
-                    <label for="message">Message</label>
-                    <textarea id="mjmessage" name="message" placeholder="Enter your message here..." required></textarea>
-                </div>
-                <button type="submit" class="mjsubmit-btn">Submit</button>
-            </form>
-        </div>
- 
-        <div class="mjinfo-cards">
-            <div class="mjinfo-card">
-                <div class="mjinfo-card-icon">✉️</div>
-                <h3>Company Email</h3>
-                <p>mingjie3210@gmail.com<br>myclothes@gmail.com</p>
+
+  <header class="hero-section">
+    <h1 class="hero-title">Contact Us</h1>
+    <p class="hero-subtitle">Any questions or remarks? Just write us a message!</p>
+  </header>
+
+  <main class="mjjcontainer">
+    <section class="mjjcontact-section">
+      <div class="mjjcontact-form">
+        <div id="successMessage" class="mjjmessage success-message"></div>
+        <div id="errorMessage" class="mjjmessage error-message"></div>
+        
+        <form id="contactForm">
+          <div class="mjjform-row">
+            <div class="mjjform-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
             </div>
-            <div class="mjinfo-card">
-                <div class="mjinfo-card-icon">📞</div>
-                <h3>Company Phone</h3>
-                <p>+65 87231193<br>+65 94550237</p>
+            <div class="mjjform-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
             </div>
-            <div class="mjinfo-card">
-                <div class="mjinfo-card-icon">📍</div>
-                <h3>Our Store Location</h3>
-                <p>My Clothes<br>Toa Payoh East 310036 , Singapore</p>
-            </div>
+          </div>
+          
+          <div class="mjjform-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+          </div>
+          
+          <div class="mjjform-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Enter your message here..." required></textarea>
+          </div>
+          
+          <button type="submit" class="mjjsubmit-btn" id="submitBtn">Send Message</button>
+        </form>
+      </div>
+
+      <div class="mjjinfo-cards">
+        <div class="mjjinfo-card">
+          <div class="mjjinfo-card-icon">✉️</div>
+          <h3>Company Email</h3>
+          <p>mingjie3210@gmail.com<br>myclothes@gmail.com</p>
         </div>
-    </main>
-    <footer class="mjfootercontactus">
-        <p>&copy; 2025 MyClothes. All rights reserved.</p>
-    </footer>
+        
+        <div class="mjjinfo-card">
+          <div class="mjjinfo-card-icon">📞</div>
+          <h3>Company Phone</h3>
+          <p>+65 87231193<br>+65 94550237</p>
+        </div>
+        
+        <div class="mjjinfo-card">
+          <div class="mjjinfo-card-icon">📍</div>
+          <h3>Store Location</h3>
+          <p>My Clothes<br>Toa Payoh East 310036<br>Singapore</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2025 My Clothes. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Email validation function
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Show message function
+    function showMessage(message, type) {
+      const messageElement = document.getElementById(type === 'success' ? 'successMessage' : 'errorMessage');
+      const otherElement = document.getElementById(type === 'success' ? 'errorMessage' : 'successMessage');
+      
+      // Hide other message
+      otherElement.classList.remove('show');
+      
+      // Show current message
+      messageElement.textContent = message;
+      messageElement.classList.add('show');
+      
+      // Hide after 5 seconds
+      setTimeout(() => {
+        messageElement.classList.remove('show');
+      }, 5000);
+    }
+
+    // Contact form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const emailInput = document.getElementById('email');
+      const nameInput = document.getElementById('name');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+      
+      const email = emailInput.value.trim();
+      const name = nameInput.value.trim();
+      const subject = subjectInput.value.trim();
+      const message = messageInput.value.trim();
+      
+      // Validate form
+      if (!email || !name || !subject || !message) {
+        showMessage('Please fill in all fields', 'error');
+        return;
+      }
+      
+      if (!isValidEmail(email)) {
+        showMessage('Please enter a valid email address', 'error');
+        return;
+      }
+      
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      
+      // Simulate API call
+      setTimeout(() => {
+        // Reset form
+        document.getElementById('contactForm').reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        
+        // Show success message
+        showMessage(`Thank you ${name}! Your message has been sent successfully. We'll get back to you soon at ${email}.`, 'success');
+      }, 1500);
+    });
+
+    // Add some subtle animations on page load
+    window.addEventListener('load', function() {
+      const cards = document.querySelectorAll('.info-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'all 0.6s ease';
+          
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100);
+        }, index * 200);
+      });
+    });
+  </script>
 </body>
 </html>
