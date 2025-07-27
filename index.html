@@ -14,7 +14,6 @@
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="product.html" class="nav-link">Shop</a></li>
         <li><a href="new arrivals.html" class="nav-link">New Arrivals</a></li>
-        <li><a href="res.html" class="nav-link">join us</a></li>
         <li><a href="#" class="nav-link">Feedback</a></li>
         <li><a href="#" class="nav-link">Contact</a></li>
         <li><a href="#" class="nav-link">About</a></li>
@@ -35,27 +34,27 @@
         <div class="category-card">
           <div class="category-icon">👗</div>
           <h3 class="category-title">Women's Fashion</h3>
-          <button class="category-btn" onclick="showAlert('Women\'s Fashion coming soon!')">Shop Now</button>
+          <a href="product.html" class="category-btn">Shop Now</a>
         </div>
         <div class="category-card">
           <div class="category-icon">👔</div>
           <h3 class="category-title">Men's Fashion</h3>
-          <button class="category-btn" onclick="showAlert('Men\'s Fashion coming soon!')">Shop Now</button>
+          <a href="product.html" class="category-btn">Shop Now</a>
         </div>
         <div class="category-card">
           <div class="category-icon">🧸</div>
           <h3 class="category-title">Kids' Fashion</h3>
-          <button class="category-btn" onclick="showAlert('Kids\' Fashion coming soon!')">Shop Now</button>
+          <a href="product.html" class="category-btn">Shop Now</a>
         </div>
         <div class="category-card">
           <div class="category-icon">💄</div>
           <h3 class="category-title">Cosmetics</h3>
-          <button class="category-btn" onclick="showAlert('Cosmetics coming soon!')">Shop Now</button>
+          <a href="product.html" class="category-btn">Shop Now</a>
         </div>
         <div class="category-card">
           <div class="category-icon">👜</div>
           <h3 class="category-title">Accessories</h3>
-          <button class="category-btn" onclick="showAlert('Accessories coming soon!')">Shop Now</button>
+          <a href="product.html" class="category-btn">Shop Now</a>
         </div>
       </div>
     </section>
@@ -249,15 +248,10 @@
         };
         
         notificationList.push(notification);
-        showAlert(`Thank you! We'll notify ${email} when ${productName} becomes available.`);
+        alert(`Thank you! We'll notify ${email} when ${productName} becomes available.`);
       } else if (email) {
-        showAlert('Please enter a valid email address.');
+        alert('Please enter a valid email address.');
       }
-    }
-
-    // Show alert function
-    function showAlert(message) {
-      alert(message);
     }
 
     // Toggle subscribers list
