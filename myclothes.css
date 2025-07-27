@@ -1,4 +1,4 @@
-:root {
+  :root {
       --primary-color: #fce4ec;
       --secondary-color: #f8f8f8;
       --text-color: #333;
@@ -245,6 +245,8 @@
       transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 1px;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .category-btn:hover {
@@ -581,6 +583,11 @@
         font-size: 1.5rem;
       }
     }
+
+
+
+
+
 
 
 
