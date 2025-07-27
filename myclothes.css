@@ -1636,15 +1636,6 @@
 }
 
 
-/* mingjie about us*/
-
-.mjfakebody {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #ebdef0;
-  color: #333;
-}
 
 .jiecontainer {
   max-width: 800px;
@@ -1656,32 +1647,7 @@
 }
 
 /* Header and Navigation */
-header nav {
-  background-color: #d7bde2;
-  padding: 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
 
-header nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-header nav a:hover {
-  color: #f8bbd9;
-}
-
-.jielogo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-right: 40px;
-}
 
 /* Main Content */
 h1 {
@@ -1800,32 +1766,6 @@ p {
 
 /* mingjiee contact us css code */
 
-.mjbody {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #ebdef0;
-}
-
-nav {
-    background-color: #d7bde2;
-    padding: 20px;
-    text-align: center;
-}
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-size: 18px;
-}
-nav a:hover {
-    color: #f8bbd9;
-}
-.mjlogo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 40px;
-}
 
 .mjmain-content {
     max-width: 1200px;
