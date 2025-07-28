@@ -5,57 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - My Clothes Store</title>
 </head>
-<link href ="myclothes.css" rel="stylesheet">
+<link href="myclothes.css" rel="stylesheet">
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">My Clothes</div>
-      <ul class="nav-menu">
-        <li><a href="hm4.html" class="nav-link">Home</a></li>
-        <li><a href="product.html" class="nav-link">Shop</a></li>
-        <li><a href="new arrivals.html" class="nav-link">New Arrivals</a></li>
-        <li><a href="res.html" class="nav-link">Join Us</a></li>
-        <li><a href="#" class="nav-link">Feedback</a></li>
-        <li><a href="mj.html" class="nav-link active">Contact</a></li>
-        <li><a href="about us.html" class="nav-link">About</a></li>
+  <nav class="mjjnavbar">
+    <div class="mjjnav-container">
+      <div class="mjjlogo">My Clothes</div>
+      <ul class="mjjnav-menu">
+        <li><a href="hm4.html" class="mjjnav-link">Home</a></li>
+        <li><a href="product.html" class="mjjnav-link">Shop</a></li>
+        <li><a href="new arrivals.html" class="mjjnav-link">New Arrivals</a></li>
+        <li><a href="res.html" class="mjjnav-link">Join Us</a></li>
+        <li><a href="#" class="mjjnav-link">Feedback</a></li>
+        <li><a href="mj.html" class="mjjnav-link mjjactive">Contact</a></li>
+        <li><a href="about us.html" class="mjjnav-link">About</a></li>
       </ul>
     </div>
   </nav>
 
-  <header class="hero-section">
-    <h1 class="hero-title">Contact Us</h1>
-    <p class="hero-subtitle">Any questions or remarks? Just write us a message!</p>
+  <header class="mjjhero-section">
+    <h1 class="mjjhero-title">Contact Us</h1>
+    <p class="mjjhero-subtitle">Any questions or remarks? Just write us a message!</p>
   </header>
 
   <main class="mjjcontainer">
     <section class="mjjcontact-section">
       <div class="mjjcontact-form">
-        <div id="successMessage" class="mjjmessage success-message"></div>
-        <div id="errorMessage" class="mjjmessage error-message"></div>
+        <div id="mjjsuccessMessage" class="mjjmessage mjjsuccess-message"></div>
+        <div id="mjjerrorMessage" class="mjjmessage mjjerror-message"></div>
         
-        <form id="contactForm">
+        <form id="mjjcontactForm">
           <div class="mjjform-row">
             <div class="mjjform-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+              <label for="mjjemail">Email Address</label>
+              <input type="email" id="mjjemail" name="email" placeholder="Enter your email address" required>
             </div>
             <div class="mjjform-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+              <label for="mjjname">Full Name</label>
+              <input type="text" id="mjjname" name="name" placeholder="Enter your full name" required>
             </div>
           </div>
           
           <div class="mjjform-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+            <label for="mjjsubject">Subject</label>
+            <input type="text" id="mjjsubject" name="subject" placeholder="What is this about?" required>
           </div>
           
           <div class="mjjform-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Enter your message here..." required></textarea>
+            <label for="mjjmessage">Message</label>
+            <textarea id="mjjmessage" name="message" placeholder="Enter your message here..." required></textarea>
           </div>
           
-          <button type="submit" class="mjjsubmit-btn" id="submitBtn">Send Message</button>
+          <button type="submit" class="mjjsubmit-btn" id="mjjsubmitBtn">Send Message</button>
         </form>
       </div>
 
@@ -81,51 +81,51 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <p class="footer-text">&copy; 2025 My Clothes. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" class="social-link" aria-label="Facebook">📘</a>
-        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+  <footer class="mjjfooter">
+    <div class="mjjfooter-content">
+      <p class="mjjfooter-text">&copy; 2025 My Clothes. All rights reserved.</p>
+      <div class="mjjsocial-links">
+        <a href="#" class="mjjsocial-link" aria-label="Facebook">📘</a>
+        <a href="#" class="mjjsocial-link" aria-label="Instagram">📷</a>
+        <a href="#" class="mjjsocial-link" aria-label="Twitter">🐦</a>
       </div>
     </div>
   </footer>
 
   <script>
     // Email validation function
-    function isValidEmail(email) {
+    function mjjisValidEmail(email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     }
 
     // Show message function
-    function showMessage(message, type) {
-      const messageElement = document.getElementById(type === 'success' ? 'successMessage' : 'errorMessage');
-      const otherElement = document.getElementById(type === 'success' ? 'errorMessage' : 'successMessage');
+    function mjjshowMessage(message, type) {
+      const messageElement = document.getElementById(type === 'success' ? 'mjjsuccessMessage' : 'mjjerrorMessage');
+      const otherElement = document.getElementById(type === 'success' ? 'mjjerrorMessage' : 'mjjsuccessMessage');
       
       // Hide other message
-      otherElement.classList.remove('show');
+      otherElement.classList.remove('mjjshow');
       
       // Show current message
       messageElement.textContent = message;
-      messageElement.classList.add('show');
+      messageElement.classList.add('mjjshow');
       
       // Hide after 5 seconds
       setTimeout(() => {
-        messageElement.classList.remove('show');
+        messageElement.classList.remove('mjjshow');
       }, 5000);
     }
 
     // Contact form handler
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('mjjcontactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const submitBtn = document.getElementById('submitBtn');
-      const emailInput = document.getElementById('email');
-      const nameInput = document.getElementById('name');
-      const subjectInput = document.getElementById('subject');
-      const messageInput = document.getElementById('message');
+      const submitBtn = document.getElementById('mjjsubmitBtn');
+      const emailInput = document.getElementById('mjjemail');
+      const nameInput = document.getElementById('mjjname');
+      const subjectInput = document.getElementById('mjjsubject');
+      const messageInput = document.getElementById('mjjmessage');
       
       const email = emailInput.value.trim();
       const name = nameInput.value.trim();
@@ -134,12 +134,12 @@
       
       // Validate form
       if (!email || !name || !subject || !message) {
-        showMessage('Please fill in all fields', 'error');
+        mjjshowMessage('Please fill in all fields', 'error');
         return;
       }
       
-      if (!isValidEmail(email)) {
-        showMessage('Please enter a valid email address', 'error');
+      if (!mjjisValidEmail(email)) {
+        mjjshowMessage('Please enter a valid email address', 'error');
         return;
       }
       
@@ -150,18 +150,18 @@
       // Simulate API call
       setTimeout(() => {
         // Reset form
-        document.getElementById('contactForm').reset();
+        document.getElementById('mjjcontactForm').reset();
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
         
         // Show success message
-        showMessage(`Thank you ${name}! Your message has been sent successfully. We'll get back to you soon at ${email}.`, 'success');
+        mjjshowMessage(`Thank you ${name}! Your message has been sent successfully. We'll get back to you soon at ${email}.`, 'success');
       }, 1500);
     });
 
     // Add some subtle animations on page load
     window.addEventListener('load', function() {
-      const cards = document.querySelectorAll('.info-card');
+      const cards = document.querySelectorAll('.mjjinfo-card');
       cards.forEach((card, index) => {
         setTimeout(() => {
           card.style.opacity = '0';
