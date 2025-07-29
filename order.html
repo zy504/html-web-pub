@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<title>myclothes</title>
+		<style>
+			.remove{border: 0px;
+			}
+			td.e{
+				box-align: center;
+			}
+		</style>
+		<link href = "style.css" rel = "stylesheet">
+	</head>
+	<body>
+		<form method = "get" action = "ConfirmationPage.html">
+		<nav>
+			<div class="logo">my clothes </div>
+			<ul>
+			  <li><a href="#">Home</a></li>
+			  <li><a href="#">shop</a></li>
+			  <li><a href="#">new arrival</a></li>
+			  <li><a href="#">feedback</a></li>
+			  <li><a href="#">contact us </a></li>
+			  <li><a href="#">about us</a></li>
+			</ul>
+		</nav>
+		
+		<div class = "b" style = "display: flex; justify-content: center; gap: 30px;">
+		<table cellpadding = "10" cellspacing = "0" border = "1" class = "c">
+			<caption style = "font-weight:bold">Order</caption>
+			<tr class = "remove">
+				<td height = "100" align = "center" class = "e">Full Name: <br/>
+				Phone Number: <br>
+				Email: <br/>
+				Address: </td><td align = "center" class = "e"><input type = "textbox" value = "name" name = "fullname" size = "40"/><br/>
+				<input type = "textbox" value = "number" name = "number" size = "40"/><br/>
+				<input type = "email" value = "email" name = "email" id = "email" size = "40"/><br/>
+				<input type = "address" value = "address" name = "address" size = "40"/></td>
+			</tr>
+			<div class = "d"><tr>
+				<td colspan = "2" height = "400" border="1"></td>
+			</tr></div>
+			<tr class = "remove">
+				<th class = "e">Price: xx.xx</th>
+				<td width = "400" align = "center" class = "e"><select>
+						<option value = "payment">Apple Pay</option>
+						<option value = "payment">Credit Card</option>
+						<option value = "payment">Debit Card</option>
+						<option value = "payment">Mastercard</option>
+				</select></td>
+			</tr>
+			<tr class = "remove">
+				<td colspan = "2" align = "center" class = "e"><input type="submit" value="Submit"/>
+				&nbsp;&nbsp;<input type = "reset" value = "Reset"></td>
+			</tr>
+		</table>
+		</div>
+		</form>
+		<!-- Floating Chat Icon -->
+		<div id="chatbot-icon">💬</div>
+
+		<!-- Chatbot Container -->
+		<div id="chatbot-container" class="hidden">
+		<div id="chatbot-header">
+			<span>Chatbot</span>
+			<button id="close-btn">&times;</button>
+		</div>
+		<div id="chatbot-body">
+			<div id="chatbot-messages"></div>
+		</div>
+		<div id="chatbot-input-container">
+			<input type="text" id="chatbot-input" placeholder="Type a message..." />
+			<button id="send-btn">Send</button>
+		</div>
+		</div>
+
+    	<script src="script.js"></script>
+	</body>
+</html>
 
