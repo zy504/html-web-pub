@@ -1,19 +1,16 @@
-// Cart functionality
 let cart = [];
 
 function addToCart(name, price, image) {
-  // Add item to cart array
+
   cart.push({
     name: name,
     price: price,
     image: image,
-    id: Date.now() // Simple unique ID
+    id: Date.now() 
   });
   
-  // Update cart display
   updateCartDisplay();
   
-  // Show success message
   showSuccessMessage();
 }
 
@@ -27,10 +24,8 @@ function updateCartDisplay() {
   const cartItems = document.getElementById('EcartItems');
   const cartTotal = document.getElementById('EcartTotal');
   
-  // Update cart count
   cartCount.textContent = cart.length;
-  
-  // Update cart items
+
   if (cart.length === 0) {
     cartItems.innerHTML = '<div class="Ecart-empty">Your cart is empty</div>';
     cartTotal.textContent = 'Total: S$0.00';
@@ -45,8 +40,7 @@ function updateCartDisplay() {
         <button class="Ecart-item-remove" onclick="removeFromCart(${item.id})">Remove</button>
       </div>
     `).join('');
-    
-    // Calculate total
+
     const total = cart.reduce((sum, item) => sum + item.price, 0);
     cartTotal.textContent = `Total: S$${total.toFixed(2)}`;
   }
@@ -67,7 +61,6 @@ function showSuccessMessage() {
   }
 }
 
-// Close cart when clicking outside
 document.addEventListener('click', function(event) {
   const cartIcon = document.querySelector('.Ecart-icon');
   const cartDropdown = document.getElementById('EcartDropdown');
@@ -77,7 +70,6 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// Optional: Filter and search functionality
 function initializeFilters() {
   const searchInput = document.getElementById('EsearchInput');
   const categoryRadios = document.querySelectorAll('input[name="cat"]');
@@ -90,28 +82,23 @@ function initializeFilters() {
   const clearFilters = document.getElementById('EclearFilters');
   const priceDisplay = document.getElementById('EpriceDisplay');
 
-  // Search functionality
   if (searchInput) {
     searchInput.addEventListener('input', filterProducts);
   }
 
-  // Category filter
   categoryRadios.forEach(radio => {
     radio.addEventListener('change', filterProducts);
   });
 
-  // Size filter
   sizeCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', filterProducts);
   });
 
-  // Other filters
   if (genderFilter) genderFilter.addEventListener('change', filterProducts);
   if (colorFilter) colorFilter.addEventListener('change', filterProducts);
   if (styleFilter) styleFilter.addEventListener('change', filterProducts);
   if (sortBy) sortBy.addEventListener('change', filterProducts);
 
-  // Price slider
   if (priceSlider) {
     priceSlider.addEventListener('input', function() {
       const value = this.value;
@@ -122,10 +109,9 @@ function initializeFilters() {
     });
   }
 
-  // Clear filters
   if (clearFilters) {
     clearFilters.addEventListener('click', function() {
-      // Reset all filters
+
       if (searchInput) searchInput.value = '';
       document.getElementById('All').checked = true;
       sizeCheckboxes.forEach(cb => cb.checked = false);
@@ -163,7 +149,6 @@ function filterProducts() {
     const price = parseFloat(card.dataset.price || 0);
     const rating = parseFloat(card.dataset.rating || 0);
 
-    // Check all filter conditions
     const matchesSearch = title.includes(searchTerm);
     const matchesCategory = !selectedCategory || category === selectedCategory;
     const matchesGender = !selectedGender || gender === selectedGender;
@@ -180,22 +165,20 @@ function filterProducts() {
     }
   });
 
-  // Sort products
   if (sortOption && visibleProducts.length > 0) {
     visibleProducts.sort((a, b) => {
       switch (sortOption) {
-        case 'l': // Price Low to High
+        case 'l': 
           return a.price - b.price;
-        case 'h': // Price High to Low
+        case 'h': 
           return b.price - a.price;
-        case 'rating': // Rating
+        case 'rating': 
           return b.rating - a.rating;
         default:
           return 0;
       }
     });
 
-    // Reorder DOM elements
     const productGrid = document.getElementById('EproductGrid');
     visibleProducts.forEach(({ card }) => {
       productGrid.appendChild(card);
@@ -203,63 +186,46 @@ function filterProducts() {
   }
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
   initializeFilters();
-  updateCartDisplay(); // Initialize cart display
+  updateCartDisplay(); y
 });
 function checkout() {
-    // Check if cart is empty
+
     if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
     }
-    
-    // Calculate total price
+
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Show checkout confirmation (replace with real payment processing)
+
     alert(`Checkout complete! Total: $${total.toFixed(2)}\n\nIn a real store, this would redirect to a payment processor.`);
     
-    // Clear cart after successful checkout
     cart = [];
     updateCartDisplay();
-    toggleCart(); // Close the cart sidebar
+    toggleCart(); 
 }
 
-// Alternative checkout function with more features
 function checkoutAdvanced() {
     if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
     }
-    
-    // Get cart summary
+
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
-    // Create order summary
+
     let orderSummary = "Order Summary:\n";
     cart.forEach(item => {
         orderSummary += `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
     });
     orderSummary += `\nTotal Items: ${itemCount}\nTotal Price: $${total.toFixed(2)}`;
-    
-    // Confirm order
+
     const confirmed = confirm(orderSummary + "\n\nProceed to checkout?");
     
     if (confirmed) {
-        // Here you would typically:
-        // 1. Send cart data to your backend
-        // 2. Redirect to payment processor (Stripe, PayPal, etc.)
-        // 3. Handle the checkout process
-        
         console.log('Sending to payment processor:', cart);
-        
-        // For demo purposes, simulate successful checkout
         alert('Redirecting to payment processor...');
-        
-        // Clear cart and close sidebar
         cart = [];
         updateCartDisplay();
         toggleCart();
