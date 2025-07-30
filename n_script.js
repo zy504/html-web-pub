@@ -1,76 +1,63 @@
-// script.js
-document.addEventListener("DOMContentLoaded", function () {
-  const chatbotContainer = document.getElementById("chatbot-container");
-  const closeBtn = document.getElementById("close-btn");
-  const sendBtn = document.getElementById("send-btn");
-  const chatbotInput = document.getElementById("chatbot-input");
-  const chatbotMessages = document.getElementById("chatbot-messages");
-
-  const chatbotIcon = document.getElementById("chatbot-icon");
-  const closeButton = document.getElementById("close-btn");
-
-  // Toggle chatbot visibility when clicking the icon
-  // Show chatbot when clicking the icon
-  chatbotIcon.addEventListener("click", function () {
-    chatbotContainer.classList.remove("hidden");
-    chatbotIcon.style.display = "none"; // Hide chat icon
-  });
-
-  // Also toggle when clicking the close button
-  closeButton.addEventListener("click", function () {
-    chatbotContainer.classList.add("hidden");
-    chatbotIcon.style.display = "flex"; // Show chat icon again
-  });
-
-  sendBtn.addEventListener("click", sendMessage);
-  chatbotInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      sendMessage();
-    }
-  });
-
-  function sendMessage() {
-    const userMessage = chatbotInput.value.trim();
-    if (userMessage) {
-      appendMessage("user", userMessage);
-      chatbotInput.value = "";
-      getBotResponse(userMessage);
-    }
-  }
-
-  function appendMessage(sender, message) {
-    const messageElement = document.createElement("div");
-    messageElement.classList.add("message", sender);
-    messageElement.textContent = message;
-    chatbotMessages.appendChild(messageElement);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-  }
-
-  async function getBotResponse(userMessage) {
-    const apiKey = "your-api-key"; // Replace with your OpenAI API key
-    const apiUrl = "https://api.openai.com/v1/chat/completions";
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: userMessage }],
-          max_tokens: 150,
-        }),
-      });
-
-      const data = await response.json();
-      const botMessage = data.choices[0].message.content;
-      appendMessage("bot", botMessage);
-    } catch (error) {
-      console.error("Error fetching bot response:", error);
-      appendMessage("bot", "Sorry, something went wrong. Please try again.");
-    }
-  }
+// Payment method selection
+document.querySelectorAll('.payment-method').forEach(method => {
+    method.addEventListener('click', function() {
+        document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        const cardDetails = document.getElementById('cardDetails');
+        if (this.dataset.method === 'card') {
+            cardDetails.style.display = 'block';
+        } else {
+            cardDetails.style.display = 'none';
+        }
+    });
 });
 
+// Form submission
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    
+    submitBtn.textContent = 'Processing Order... ⏳';
+    submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        alert('🎉 Order placed successfully! You will receive a confirmation email shortly.');
+        window.location.href = '#'; // In real app, redirect to confirmation page
+    }, 2000);
+});
+
+// Card number formatting
+document.getElementById('cardNumber').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    if (formattedValue.length > 19) formattedValue = formattedValue.substring(0, 19);
+    e.target.value = formattedValue;
+});
+
+// Expiry date formatting
+document.getElementById('expiry').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+});
+
+// CVV formatting
+document.getElementById('cvv').addEventListener('input', function(e) {
+    e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
+});
+
+// Add floating animation on scroll
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const shapes = document.querySelectorAll('.floating-shape');
+    shapes.forEach((shape, index) => {
+        const speed = 0.5 + (index * 0.1);
+        shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+    });
+});
