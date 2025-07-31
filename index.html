@@ -163,6 +163,78 @@
   </footer>
 
   <script>
+	  let cart = [];
+
+function addToCart(name, price, image) {
+
+  cart.push({
+    name: name,
+    price: price,
+    image: image,
+    id: Date.now() 
+  });
+  
+  updateCartDisplay();
+  
+  showSuccessMessage();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCartDisplay();
+}
+
+function updateCartDisplay() {
+  const cartCount = document.getElementById('EcartCount');
+  const cartItems = document.getElementById('EcartItems');
+  const cartTotal = document.getElementById('EcartTotal');
+  
+  cartCount.textContent = cart.length;
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<div class="Ecart-empty">Your cart is empty</div>';
+    cartTotal.textContent = 'Total: S$0.00';
+  } else {
+    cartItems.innerHTML = cart.map(item => `
+      <div class="Ecart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="Ecart-item-info">
+          <div class="Ecart-item-name">${item.name}</div>
+          <div class="Ecart-item-price">S$${item.price.toFixed(2)}</div>
+        </div>
+        <button class="Ecart-item-remove" onclick="removeFromCart(${item.id})">Remove</button>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    cartTotal.textContent = `Total: S$${total.toFixed(2)}`;
+  }
+}
+
+function toggleCart() {
+  const cartDropdown = document.getElementById('EcartDropdown');
+  cartDropdown.classList.toggle('show');
+}
+
+function showSuccessMessage() {
+  const successMessage = document.getElementById('successMessage');
+  if (successMessage) {
+    successMessage.style.display = 'block';
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 2000);
+  }
+}
+
+document.addEventListener('click', function(event) {
+  const cartIcon = document.querySelector('.Ecart-icon');
+  const cartDropdown = document.getElementById('EcartDropdown');
+  
+  if (!cartIcon.contains(event.target) && !cartDropdown.contains(event.target)) {
+    cartDropdown.classList.remove('show');
+  }
+});
+
     // Store subscribers in memory (in a real app, this would be sent to a server)
     let subscribers = [];
     let notificationList = [];
