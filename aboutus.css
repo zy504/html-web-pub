@@ -16,13 +16,7 @@ body {
   color: #333;
 }
 
-/*.mjfakebody {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #ebdef0;
-  color: #333;
-}*/
+
 
 .jiecontainer {
   max-width: 55%;
@@ -33,23 +27,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Header and Navigation */
-/*header nav {
-  background-color: #d7bde2;
-  padding: 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
 
-header nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
 
 header nav a:hover {
   color: #f8bbd9;
