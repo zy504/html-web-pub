@@ -1,24 +1,3 @@
- :root {
-      --primary-color: #fce4ec;
-      --secondary-color: #f8f8f8;
-      --text-color: #333;
-      --accent-color: #e91e63;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
-      --border-radius: 10px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--secondary-color);
-    }
 
     
     .mjjnavbar {
