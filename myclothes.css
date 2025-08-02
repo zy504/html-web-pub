@@ -1473,13 +1473,13 @@
     }
 
     .Esize-options button {
-      margin: 1px;
-      padding: 3px 6px;
+      margin: 2px;
+      padding:5px 10px;
       border: 1px solid #ccc;
       background: #fafafa;
       cursor: pointer;
-      border-radius: 3px;
-      font-size: 10px;
+      border-radius: 4px;
+      font-size: 11px;
     }
 
     .Esize-options button:hover {
@@ -1634,7 +1634,57 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
+.add-to-cart:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
 
+.warning {
+      color: #ff4444;
+      font-size: 11px;
+      margin-top: 5px;
+      display: none;
+	  text-align: center;  
+  background: #ffe8e8; 
+  padding: 4px;        
+  border-radius: 4px;
+    }
+
+.Dsuccess-message {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 6px;
+      display: none;
+      z-index: 1000;
+    }
+
+.selected-size-display {
+      margin: 8px 0;
+      padding: 6px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      font-size: 11px;
+	  text-align: center;
+	  transition: background-color 0.3s;
+    }
+.Esize-btn.selected {
+  background: #ff99ff;
+  color: white;
+  border-color: #ff99ff;
+}
+
+.selected-size-display.selected {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.Esize-btn {
+  transition: all 0.3s;
+}
 
 
 
