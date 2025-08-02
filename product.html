@@ -114,10 +114,13 @@
           <div class="Erating">⭐ 4.87 (100+)</div>
           <div class="Esize-options">
 	    <label>Size:</label>
-            <button>S</button>
-            <button>M</button>
-            <button>L</button>
-            <button>XL</button>
+                <button class="Esize-btn" onclick="selectSize(this, 'product1', 'S')">S</button>
+    		<button class="Esize-btn" onclick="selectSize(this, 'product1', 'M')">M</button>
+    		<button class="Esize-btn" onclick="selectSize(this, 'product1', 'L')">L</button>
+    		<button class="Esize-btn" onclick="selectSize(this, 'product1', 'XL')">XL</button>
+    
+    <div class="selected-size-display" id="sizeDisplay1">No size selected</div>
+    <div class="warning" id="warning1">Please select a size first!</div>
           </div>
           <div class="EGender">Men</div>
           <div class="EColor">Blue</div>
