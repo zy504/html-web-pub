@@ -1,17 +1,93 @@
+// Store selected sizes for each product
+let selectedSizes = {};
 let cart = [];
 
-function addToCart(name, price, image) {
-
-  cart.push({
-    name: name,
-    price: price,
-    image: image,
-    id: Date.now() 
+function selectSize(button, productId, size) {
+  console.log('Size button clicked:', size, 'for product:', productId);
+  
+  // Find the product card
+  const productCard = button.closest('.Eproduct-card');
+  
+  // Remove selected class from all size buttons in this product
+  const sizeButtons = productCard.querySelectorAll('.Esize-btn');
+  sizeButtons.forEach(btn => {
+    btn.classList.remove('selected');
   });
   
+  // Add selected class to clicked button
+  button.classList.add('selected');
+  
+  // Store the selected size
+  selectedSizes[productId] = size;
+  
+  // Update the display - extract number from productId (product1 -> 1)
+  const productNumber = productId.replace('product', '');
+  const sizeDisplay = document.getElementById('sizeDisplay' + productNumber);
+  if (sizeDisplay) {
+    sizeDisplay.textContent = `Selected: ${size}`;
+    sizeDisplay.classList.add('selected');
+  }
+  
+  // Hide warning
+  const warning = document.getElementById('warning' + productNumber);
+  if (warning) {
+    warning.style.display = 'none';
+  }
+  
+  console.log('Selected sizes:', selectedSizes);
+}
+
+function addToCart(productName, price, imageUrl, productId) {
+  console.log('Add to cart clicked for:', productName);
+  
+  // Check if this product has size options
+  const productCard = document.querySelector(`a[href="#${productId}"]`).closest('.Eproduct-card');
+  const hasSizeOptions = productCard.querySelector('.Esize-options .Esize-btn');
+  
+  if (hasSizeOptions && !selectedSizes[productId]) {
+    console.log('No size selected, showing warning');
+    
+    // Extract number from productId
+    const productNumber = productId.replace('product', '');
+    
+    // Show warning
+    const warning = document.getElementById('warning' + productNumber);
+    if (warning) {
+      warning.style.display = 'block';
+    }
+    
+    // Change size display to show error
+    const sizeDisplay = document.getElementById('sizeDisplay' + productNumber);
+    if (sizeDisplay) {
+      sizeDisplay.textContent = 'Please select a size!';
+      sizeDisplay.style.background = '#ffe8e8';
+      sizeDisplay.style.color = '#d32f2f';
+    }
+    
+    return; // Don't add to cart
+  }
+  
+  // Create full product name with size if selected
+  let fullProductName = productName;
+  if (selectedSizes[productId]) {
+    fullProductName += ` (Size: ${selectedSizes[productId]})`;
+  }
+  
+  // Add item to cart array
+  cart.push({
+    name: fullProductName,
+    price: price,
+    image: imageUrl,
+    id: Date.now() // Simple unique ID
+  });
+  
+  console.log(`Adding to cart: ${fullProductName} - S${price}`);
+  
+  // Update cart display
   updateCartDisplay();
   
-  showSuccessMessage();
+  // Show success message
+  showSuccessMessage(`${fullProductName} added to cart!`);
 }
 
 function removeFromCart(id) {
@@ -24,8 +100,10 @@ function updateCartDisplay() {
   const cartItems = document.getElementById('EcartItems');
   const cartTotal = document.getElementById('EcartTotal');
   
+  // Update cart count
   cartCount.textContent = cart.length;
-
+  
+  // Update cart items
   if (cart.length === 0) {
     cartItems.innerHTML = '<div class="Ecart-empty">Your cart is empty</div>';
     cartTotal.textContent = 'Total: S$0.00';
@@ -35,14 +113,15 @@ function updateCartDisplay() {
         <img src="${item.image}" alt="${item.name}">
         <div class="Ecart-item-info">
           <div class="Ecart-item-name">${item.name}</div>
-          <div class="Ecart-item-price">S$${item.price.toFixed(2)}</div>
+          <div class="Ecart-item-price">S${item.price.toFixed(2)}</div>
         </div>
         <button class="Ecart-item-remove" onclick="removeFromCart(${item.id})">Remove</button>
       </div>
     `).join('');
-
+    
+    // Calculate total
     const total = cart.reduce((sum, item) => sum + item.price, 0);
-    cartTotal.textContent = `Total: S$${total.toFixed(2)}`;
+    cartTotal.textContent = `Total: S${total.toFixed(2)}`;
   }
 }
 
@@ -51,183 +130,47 @@ function toggleCart() {
   cartDropdown.classList.toggle('show');
 }
 
-function showSuccessMessage() {
-  const successMessage = document.getElementById('successMessage');
-  if (successMessage) {
-    successMessage.style.display = 'block';
+function showSuccessMessage(message) {
+  const successMsg = document.getElementById('successMessage');
+  if (successMsg) {
+    successMsg.textContent = message || 'Item added to cart!';
+    successMsg.style.display = 'block';
+    
     setTimeout(() => {
-      successMessage.style.display = 'none';
-    }, 2000);
+      successMsg.style.display = 'none';
+    }, 3000);
   }
 }
 
+function checkout() {
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+  
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  
+  // Show checkout confirmation
+  alert(`Checkout complete! Total: S${total.toFixed(2)}\n\nIn a real store, this would redirect to a payment processor.`);
+  
+  // Clear cart after successful checkout
+  cart = [];
+  updateCartDisplay();
+  toggleCart(); // Close the cart dropdown
+}
+
+// Close cart when clicking outside
 document.addEventListener('click', function(event) {
   const cartIcon = document.querySelector('.Ecart-icon');
   const cartDropdown = document.getElementById('EcartDropdown');
   
-  if (!cartIcon.contains(event.target) && !cartDropdown.contains(event.target)) {
+  if (cartIcon && cartDropdown && !cartIcon.contains(event.target) && !cartDropdown.contains(event.target)) {
     cartDropdown.classList.remove('show');
   }
 });
 
-function initializeFilters() {
-  const searchInput = document.getElementById('EsearchInput');
-  const categoryRadios = document.querySelectorAll('input[name="cat"]');
-  const sizeCheckboxes = document.querySelectorAll('input[name="size"]');
-  const genderFilter = document.getElementById('EgenderFilter');
-  const colorFilter = document.getElementById('EcolorFilter');
-  const styleFilter = document.getElementById('EstyleFilter');
-  const priceSlider = document.getElementById('priceSlider');
-  const sortBy = document.getElementById('EsortBy');
-  const clearFilters = document.getElementById('EclearFilters');
-  const priceDisplay = document.getElementById('EpriceDisplay');
-
-  if (searchInput) {
-    searchInput.addEventListener('input', filterProducts);
-  }
-
-  categoryRadios.forEach(radio => {
-    radio.addEventListener('change', filterProducts);
-  });
-
-  sizeCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', filterProducts);
-  });
-
-  if (genderFilter) genderFilter.addEventListener('change', filterProducts);
-  if (colorFilter) colorFilter.addEventListener('change', filterProducts);
-  if (styleFilter) styleFilter.addEventListener('change', filterProducts);
-  if (sortBy) sortBy.addEventListener('change', filterProducts);
-
-  if (priceSlider) {
-    priceSlider.addEventListener('input', function() {
-      const value = this.value;
-      if (priceDisplay) {
-        priceDisplay.textContent = `S$1 - S$${value}`;
-      }
-      filterProducts();
-    });
-  }
-
-  if (clearFilters) {
-    clearFilters.addEventListener('click', function() {
-
-      if (searchInput) searchInput.value = '';
-      document.getElementById('All').checked = true;
-      sizeCheckboxes.forEach(cb => cb.checked = false);
-      if (genderFilter) genderFilter.value = '';
-      if (colorFilter) colorFilter.value = '';
-      if (styleFilter) styleFilter.value = '';
-      if (priceSlider) priceSlider.value = 100;
-      if (sortBy) sortBy.value = '';
-      if (priceDisplay) priceDisplay.textContent = 'S$1 - S$100';
-      
-      filterProducts();
-    });
-  }
-}
-
-function filterProducts() {
-  const searchTerm = document.getElementById('EsearchInput')?.value.toLowerCase() || '';
-  const selectedCategory = document.querySelector('input[name="cat"]:checked')?.value || '';
-  const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked')).map(cb => cb.value);
-  const selectedGender = document.getElementById('EgenderFilter')?.value || '';
-  const selectedColor = document.getElementById('EcolorFilter')?.value || '';
-  const selectedStyle = document.getElementById('EstyleFilter')?.value || '';
-  const maxPrice = parseFloat(document.getElementById('priceSlider')?.value || 100);
-  const sortOption = document.getElementById('EsortBy')?.value || '';
-
-  const productCards = document.querySelectorAll('.Eproduct-card');
-  let visibleProducts = [];
-
-  productCards.forEach(card => {
-    const title = card.querySelector('.Eproduct-title')?.textContent.toLowerCase() || '';
-    const category = card.dataset.category || '';
-    const gender = card.dataset.gender || '';
-    const color = card.dataset.color || '';
-    const style = card.dataset.style || '';
-    const price = parseFloat(card.dataset.price || 0);
-    const rating = parseFloat(card.dataset.rating || 0);
-
-    const matchesSearch = title.includes(searchTerm);
-    const matchesCategory = !selectedCategory || category === selectedCategory;
-    const matchesGender = !selectedGender || gender === selectedGender;
-    const matchesColor = !selectedColor || color === selectedColor;
-    const matchesStyle = !selectedStyle || style === selectedStyle;
-    const matchesPrice = price <= maxPrice;
-    const matchesSize = selectedSizes.length === 0; // Size filtering logic can be added here
-
-    if (matchesSearch && matchesCategory && matchesGender && matchesColor && matchesStyle && matchesPrice && matchesSize) {
-      card.style.display = 'flex';
-      visibleProducts.push({ card, price, rating });
-    } else {
-      card.style.display = 'none';
-    }
-  });
-
-  if (sortOption && visibleProducts.length > 0) {
-    visibleProducts.sort((a, b) => {
-      switch (sortOption) {
-        case 'l': 
-          return a.price - b.price;
-        case 'h': 
-          return b.price - a.price;
-        case 'rating': 
-          return b.rating - a.rating;
-        default:
-          return 0;
-      }
-    });
-
-    const productGrid = document.getElementById('EproductGrid');
-    visibleProducts.forEach(({ card }) => {
-      productGrid.appendChild(card);
-    });
-  }
-}
-
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-  initializeFilters();
-  updateCartDisplay(); y
+  updateCartDisplay(); // Initialize cart display
+  console.log('JavaScript loaded successfully!');
 });
-function checkout() {
-
-    if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-    }
-
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-    alert(`Checkout complete! Total: $${total.toFixed(2)}\n\nIn a real store, this would redirect to a payment processor.`);
-    
-    cart = [];
-    updateCartDisplay();
-    toggleCart(); 
-}
-
-function checkoutAdvanced() {
-    if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-    }
-
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    let orderSummary = "Order Summary:\n";
-    cart.forEach(item => {
-        orderSummary += `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
-    });
-    orderSummary += `\nTotal Items: ${itemCount}\nTotal Price: $${total.toFixed(2)}`;
-
-    const confirmed = confirm(orderSummary + "\n\nProceed to checkout?");
-    
-    if (confirmed) {
-        console.log('Sending to payment processor:', cart);
-        alert('Redirecting to payment processor...');
-        cart = [];
-        updateCartDisplay();
-        toggleCart();
-    }
-}
