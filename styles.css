@@ -1,44 +1,70 @@
-nav {
-      background-color: #fce4ec;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-	  }
-nav .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
+:root {
+	--primary-color: #fce4ec;
+	--secondary-color: #f8f8f8;
+	--text-color: #333;
+	--accent-color: #e91e63;
+	--shadow: 0 4px 12px rgba(0,0,0,0.1);
+	--border-radius: 10px;
+}
 
-	nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #fce4ce;
-    }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f3e8ff 100%);
-    min-height: 100vh;
-    padding: 20px;
-    line-height: 1.6;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	line-height: 1.6;
+	color: var(--text-color);
+	background-color: var(--secondary-color);
+}
+
+
+.navbar {
+	background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
+	padding: 1rem 2rem;
+	box-shadow: var(--shadow);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: var(--accent-color);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.nav-menu {
+	display: flex;
+	list-style: none;
+	gap: 2rem;
+}
+
+.nav-link {
+	color: var(--text-color);
+	text-decoration: none;
+	font-weight: 500;
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	transition: all 0.3s ease;
+	text-transform: capitalize;
+}
+
+.nav-link:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	transform: translateY(-2px);
 }
 
 .container {
