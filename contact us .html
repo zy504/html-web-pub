@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - My Clothes Store</title>
+    <link href="mycontact.css" rel="stylesheet">
+    <link href="myclothes.css" rel="stylesheet">
 </head>
-<link href="mycontact.css" rel="stylesheet">
-<link href="myclothes.css" rel="stylesheet">
 <body>
   <nav class="mjjnavbar">
     <div class="mjjnav-container">
@@ -18,23 +18,23 @@
         <li><a href="order.html" class="mjjnav-link">order</a></li>
         <li><a href="contact us .html" class="mjjnav-link">Contact</a></li>
         <li><a href="about us .html" class="nmjjav-link">About</a></li>
-        <nav class="navbar">
-        <li style="position: relative;">
-          <div class="Ecart-icon" onclick="toggleCart()">
-            <svg viewBox="0 0 24 24">
-              <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-            <span class="Ecart-count" id="EcartCount">0</span>
-          </div>
-          <div class="Ecart-dropdown" id="EcartDropdown">
-            <div class="Ecart-header">Shopping Cart</div>
-            <div id="EcartItems"></div>
-            <div class="Ecart-total" id="EcartTotal">Total: S$0.00</div>
-	    <button class="Echeckout-btn" onclick="checkout()">Proceed to Checkout</button>
-          </div>
-        </li>
-        </nav>
-     
+      </ul>
+      <div style="position: relative;">
+        <div class="Ecart-icon" onclick="toggleCart()">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+          <span class="Ecart-count" id="EcartCount">0</span>
+        </div>
+        <div class="Ecart-dropdown" id="EcartDropdown">
+          <div class="Ecart-header">Shopping Cart</div>
+          <div id="EcartItems"></div>
+          <div class="Ecart-total" id="EcartTotal">Total: S$0.00</div>
+          <button class="Echeckout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+      </div>
+  </nav> <
+
 
   <header class="mjjhero-section">
     <h1 class="mjjhero-title">Contact Us</h1>
@@ -46,7 +46,6 @@
       <div class="mjjcontact-form">
         <div id="mjjsuccessMessage" class="mjjmessage mjjsuccess-message"></div>
         <div id="mjjerrorMessage" class="mjjmessage mjjerror-message"></div>
-        
         <form id="mjjcontactForm">
           <div class="mjjform-row">
             <div class="mjjform-group">
@@ -58,34 +57,28 @@
               <input type="text" id="mjjname" name="name" placeholder="Enter your full name" required>
             </div>
           </div>
-          
           <div class="mjjform-group">
             <label for="mjjsubject">Subject</label>
             <input type="text" id="mjjsubject" name="subject" placeholder="What is this about?" required>
           </div>
-          
           <div class="mjjform-group">
             <label for="mjjmessage">Message</label>
             <textarea id="mjjmessage" name="message" placeholder="Enter your message here..." required></textarea>
           </div>
-          
           <button type="submit" class="mjjsubmit-btn" id="mjjsubmitBtn">Send Message</button>
         </form>
       </div>
-
       <div class="mjjinfo-cards">
         <div class="mjjinfo-card">
           <div class="mjjinfo-card-icon">✉️</div>
           <h3>Company Email</h3>
           <p>mingjie3210@gmail.com<br>myclothes@gmail.com</p>
         </div>
-        
         <div class="mjjinfo-card">
           <div class="mjjinfo-card-icon">📞</div>
           <h3>Company Phone</h3>
           <p>+65 87231193<br>+65 94550237</p>
         </div>
-        
         <div class="mjjinfo-card">
           <div class="mjjinfo-card-icon">📍</div>
           <h3>Store Location</h3>
@@ -112,67 +105,54 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     }
-
     // Show message function
     function mjjshowMessage(message, type) {
       const messageElement = document.getElementById(type === 'success' ? 'mjjsuccessMessage' : 'mjjerrorMessage');
       const otherElement = document.getElementById(type === 'success' ? 'mjjerrorMessage' : 'mjjsuccessMessage');
-      
       // Hide other message
       otherElement.classList.remove('mjjshow');
-      
       // Show current message
       messageElement.textContent = message;
       messageElement.classList.add('mjjshow');
-      
       // Hide after 5 seconds
       setTimeout(() => {
         messageElement.classList.remove('mjjshow');
       }, 5000);
     }
-
     // Contact form handler
     document.getElementById('mjjcontactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
       const submitBtn = document.getElementById('mjjsubmitBtn');
       const emailInput = document.getElementById('mjjemail');
       const nameInput = document.getElementById('mjjname');
       const subjectInput = document.getElementById('mjjsubject');
       const messageInput = document.getElementById('mjjmessage');
-      
       const email = emailInput.value.trim();
       const name = nameInput.value.trim();
       const subject = subjectInput.value.trim();
       const message = messageInput.value.trim();
-      
       // Validate form
       if (!email || !name || !subject || !message) {
         mjjshowMessage('Please fill in all fields', 'error');
         return;
       }
-      
       if (!mjjisValidEmail(email)) {
         mjjshowMessage('Please enter a valid email address', 'error');
         return;
       }
-      
       // Disable button and show loading
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
-      
       // Simulate API call
       setTimeout(() => {
         // Reset form
         document.getElementById('mjjcontactForm').reset();
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
-        
         // Show success message
         mjjshowMessage(`Thank you ${name}! Your message has been sent successfully. We'll get back to you soon at ${email}.`, 'success');
       }, 1500);
     });
-
     // Add some subtle animations on page load
     window.addEventListener('load', function() {
       const cards = document.querySelectorAll('.mjjinfo-card');
@@ -181,7 +161,6 @@
           card.style.opacity = '0';
           card.style.transform = 'translateY(20px)';
           card.style.transition = 'all 0.6s ease';
-          
           setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
