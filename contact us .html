@@ -17,7 +17,7 @@
         <li><a href="res.html" class="mjjnav-link">join us</a></li>
         <li><a href="order.html" class="mjjnav-link">order</a></li>
         <li><a href="contact us .html" class="mjjnav-link">Contact</a></li>
-        <li><a href="about us .html" class="mjjav-link">About</a></li>
+        <li><a href="about us .html" class="nmjjav-link">About</a></li>
       </ul>
       <div style="position: relative;">
         <div class="Ecart-icon" onclick="toggleCart()">
@@ -35,7 +35,6 @@
       </div>
   </nav> 
 
-
   <header class="mjjhero-section">
     <h1 class="mjjhero-title">Contact Us</h1>
     <p class="mjjhero-subtitle">Any questions or remarks? Just write us a message!</p>
@@ -44,10 +43,10 @@
   <main class="mjjcontainer">
     <section class="mjjcontact-section">
       <div class="mjjcontact-form">
-        <div id="mjjsuccessMessage" class="mjjmessage mjjsuccess-message"></div>
-        <div id="mjjerrorMessage" class="mjjmessage mjjerror-message"></div>
         <form id="mjjcontactForm">
-		<div class="mjjform-spacer"></div> 
+          <!-- Added blank space above email and name fields -->
+          <div class="mjjform-spacer"></div>
+          
           <div class="mjjform-row">
             <div class="mjjform-group">
               <label for="mjjemail">Email Address</label>
@@ -66,6 +65,13 @@
             <label for="mjjmessage">Message</label>
             <textarea id="mjjmessage" name="message" placeholder="Enter your message here..." required></textarea>
           </div>
+          
+          <!-- Moved message container near submit button -->
+          <div class="mjjmessage-container">
+            <div id="mjjsuccessMessage" class="mjjmessage mjjsuccess-message"></div>
+            <div id="mjjerrorMessage" class="mjjmessage mjjerror-message"></div>
+          </div>
+          
           <button type="submit" class="mjjsubmit-btn" id="mjjsubmitBtn">Send Message</button>
         </form>
       </div>
