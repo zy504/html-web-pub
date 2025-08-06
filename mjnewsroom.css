@@ -1,4 +1,4 @@
- :root {
+:root {
       --primary-color: #fce4ec;
       --secondary-color: #f8f8f8;
       --text-color: #333;
@@ -34,7 +34,7 @@ nav a:hover {
     color: #f8bbd9;
 }*/
 
-    .navbar {
+/*    .navbar {
       background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
       padding: 1rem 2rem;
       box-shadow: var(--shadow);
@@ -86,6 +86,58 @@ nav a:hover {
     font-weight: bold;
     margin-right: 40px;
 }
+
+*/
+    .mjjnavbar {
+      background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .mjjnav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mjjlogo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mjjnav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .mjjnav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+    }
+
+    .mjjnav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .mjjnav-link.mjjactive {
+      background-color: rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+    }
 
 h2.newsnewarrival , marquee{
   color: white;
