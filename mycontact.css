@@ -1,4 +1,6 @@
- .mjjnavbar {
+ 
+	
+    .mjjnavbar {
       background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
       padding: 1rem 2rem;
       box-shadow: var(--shadow);
@@ -98,10 +100,10 @@
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
-
-.mjjform-spacer {
-  height: 2rem;
-}
+    /* Add spacing above the first form row */
+    .mjjform-spacer {
+      height: 2rem;
+    }
 
     .mjjform-row {
       display: flex;
@@ -147,6 +149,12 @@
       min-height: 150px;
     }
 
+    /* Move message container to bottom near submit button */
+    .mjjmessage-container {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
     .mjjsubmit-btn {
       width: 100%;
       background: linear-gradient(135deg, var(--accent-color), #ff6b9d);
@@ -160,7 +168,6 @@
       transition: all 0.3s ease;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-top: 1rem;
     }
 
     .mjjsubmit-btn:hover {
@@ -174,11 +181,6 @@
       cursor: not-allowed;
       transform: none;
     }
-	
-	.mjjmessage-container {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
 
     /* Info Cards */
     .mjjinfo-cards {
@@ -256,27 +258,26 @@
       opacity: 0;
       transform: translateY(-10px);
       transition: all 0.3s ease;
+      display: none;
     }
 
+    .mjjmessage.mjjshow {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
 
-/* Success/Error Messages */
-.mjjmessage {
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 1rem;
-  font-weight: 500;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  display: none;  /* Added this line */
-}
+    .mjjsuccess-message {
+      background: rgba(76, 175, 80, 0.1);
+      color: #2e7d32;
+      border: 2px solid rgba(76, 175, 80, 0.3);
+    }
 
-.mjjmessage.mjjshow {
-  opacity: 1;
-  transform: translateY(0);
-  display: block;  /* Added this line */
-}
-
+    .mjjerror-message {
+      background: rgba(244, 67, 54, 0.1);
+      color: #c62828;
+      border: 2px solid rgba(244, 67, 54, 0.3);
+    }
 
     /* Footer */
     .mjjfooter {
