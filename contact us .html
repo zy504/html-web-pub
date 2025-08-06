@@ -33,7 +33,7 @@
           <button class="Echeckout-btn" onclick="checkout()">Proceed to Checkout</button>
         </div>
       </div>
-  </nav> <
+  </nav> 
 
 
   <header class="mjjhero-section">
@@ -47,6 +47,7 @@
         <div id="mjjsuccessMessage" class="mjjmessage mjjsuccess-message"></div>
         <div id="mjjerrorMessage" class="mjjmessage mjjerror-message"></div>
         <form id="mjjcontactForm">
+		<div class="mjjform-spacer"></div> 
           <div class="mjjform-row">
             <div class="mjjform-group">
               <label for="mjjemail">Email Address</label>
@@ -105,54 +106,67 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     }
+    
     // Show message function
     function mjjshowMessage(message, type) {
       const messageElement = document.getElementById(type === 'success' ? 'mjjsuccessMessage' : 'mjjerrorMessage');
       const otherElement = document.getElementById(type === 'success' ? 'mjjerrorMessage' : 'mjjsuccessMessage');
+      
       // Hide other message
       otherElement.classList.remove('mjjshow');
+      
       // Show current message
       messageElement.textContent = message;
       messageElement.classList.add('mjjshow');
+      
       // Hide after 5 seconds
       setTimeout(() => {
         messageElement.classList.remove('mjjshow');
       }, 5000);
     }
+    
     // Contact form handler
     document.getElementById('mjjcontactForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      
       const submitBtn = document.getElementById('mjjsubmitBtn');
       const emailInput = document.getElementById('mjjemail');
       const nameInput = document.getElementById('mjjname');
       const subjectInput = document.getElementById('mjjsubject');
       const messageInput = document.getElementById('mjjmessage');
+      
       const email = emailInput.value.trim();
       const name = nameInput.value.trim();
       const subject = subjectInput.value.trim();
       const message = messageInput.value.trim();
+      
       // Validate form
       if (!email || !name || !subject || !message) {
         mjjshowMessage('Please fill in all fields', 'error');
         return;
       }
+      
       if (!mjjisValidEmail(email)) {
         mjjshowMessage('Please enter a valid email address', 'error');
         return;
       }
+      
       // Disable button and show loading
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
+      
       // Simulate API call
       setTimeout(() => {
         // Reset form
         document.getElementById('mjjcontactForm').reset();
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
+        
         // Show success message
         mjjshowMessage(`Thank you ${name}! Your message has been sent successfully. We'll get back to you soon at ${email}.`, 'success');
       }, 1500);
     });
+    
     // Add some subtle animations on page load
     window.addEventListener('load', function() {
       const cards = document.querySelectorAll('.mjjinfo-card');
