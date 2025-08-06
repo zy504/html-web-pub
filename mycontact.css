@@ -1,6 +1,4 @@
-
-    
-    .mjjnavbar {
+ .mjjnavbar {
       background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
       padding: 1rem 2rem;
       box-shadow: var(--shadow);
@@ -100,6 +98,11 @@
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
+
+.mjjform-spacer {
+  height: 2rem;
+}
+
     .mjjform-row {
       display: flex;
       gap: 2rem;
@@ -171,6 +174,11 @@
       cursor: not-allowed;
       transform: none;
     }
+	
+	.mjjmessage-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
     /* Info Cards */
     .mjjinfo-cards {
@@ -250,22 +258,25 @@
       transition: all 0.3s ease;
     }
 
-    .mjjmessage.mjjshow {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
-    .mjjsuccess-message {
-      background: rgba(76, 175, 80, 0.1);
-      color: #2e7d32;
-      border: 2px solid rgba(76, 175, 80, 0.3);
-    }
+/* Success/Error Messages */
+.mjjmessage {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  display: none;  /* Added this line */
+}
 
-    .mjjerror-message {
-      background: rgba(244, 67, 54, 0.1);
-      color: #c62828;
-      border: 2px solid rgba(244, 67, 54, 0.3);
-    }
+.mjjmessage.mjjshow {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;  /* Added this line */
+}
+
 
     /* Footer */
     .mjjfooter {
@@ -392,4 +403,3 @@
         height: 60px;
         font-size: 1.5rem;
       }
-   
