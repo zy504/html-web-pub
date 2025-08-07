@@ -1,4 +1,4 @@
-:root {
+ :root {
       --primary-color: #fce4ec;
       --secondary-color: #f8f8f8;
       --text-color: #333;
@@ -19,75 +19,6 @@ body.newsbody {
     background-color: #f8bbd9;
 }
 
-/*nav {
-    background-color: #d7bde2;
-    padding: 20px;
-    text-align: center;
-}
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-size: 18px;
-}
-nav a:hover {
-    color: #f8bbd9;
-}*/
-
-/*    .navbar {
-      background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
-      padding: 1rem 2rem;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: var(--accent-color);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      text-transform: capitalize;
-    }
-
-    .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-
-.newslogo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 40px;
-}
-
-*/
     .mjjnavbar {
       background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
       padding: 1rem 2rem;
@@ -459,44 +390,41 @@ main{
             color: white;
         }
 
-        /* Footer - Matching MyClothes */
-        /*.jiefooteraboutus {
-            background: linear-gradient(135deg, #d7bde2, #ebdef0);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 80px;
-        }
 
-        .jiesocial-links {
-            margin-bottom: 10px;
-        }
+         .footer {
+      background: linear-gradient(135deg, var(--primary-color), #f8bbd9);
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
 
-        .jiesocial-links a {
-            color: white;
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .jiesocial-links a:hover {
-            color: #f8bbd9;
-        }*/
-        .mingjiefooteraboutus {
-        /*background: linear-gradient(135deg, #d7bde2, #ebdef0);*/
-        background-color:#ff6b9d;
-        color: white;
-        padding: 40px 0;
-        text-align: center;
-        margin-top: 80px;
-        }
+    .footer-text {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+    }
 
-        .mingjiesocial-links {
-        margin-bottom: 10px;
-        }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
 
-        .mingjiesocial-links a {
-        color: white;
-        margin: 0 10px;
-        font-size: 20px;
-        }
+    .social-link {
+      display: inline-block;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent-color);
+      transform: translateY(-2px);
+    }
