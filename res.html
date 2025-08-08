@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Clothes Store - Registration</title>
-  <link href="myclothes.css" rel="stylesheet">
-  </head>
+</head>
+
 <body class="zz-body">
   <nav class="zz-navbar">
     <div class="zz-nav-container">
@@ -17,8 +17,7 @@
         <li><a href="order.html" class="zz-nav-link">order</a></li>
         <li><a href="contact us .html" class="zz-nav-link">Contact</a></li>
         <li><a href="about us .html" class="zz-nav-link">About</a></li>
-      </ul>
-      <li style="position: relative;">
+        <li style="position: relative;">
           <div class="Ecart-icon" onclick="toggleCart()">
             <svg viewBox="0 0 24 24">
               <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
@@ -29,10 +28,10 @@
             <div class="Ecart-header">Shopping Cart</div>
             <div id="EcartItems"></div>
             <div class="Ecart-total" id="EcartTotal">Total: S$0.00</div>
-	    <button class="Echeckout-btn" onclick="checkout()">Proceed to Checkout</button>
+            <button class="Echeckout-btn" onclick="checkout()">Proceed to Checkout</button>
           </div>
         </li>
-    </div>
+      </ul>
     </div>
   </nav>
 
@@ -43,9 +42,6 @@
     </div>
 
     <div class="zz-registration-form-container">
-      <div id="zzSuccessMessage" class="zz-success-message"></div>
-      <div id="zzErrorMessage" class="zz-error-message"></div>
-      
       <form id="zzRegistrationForm" class="zz-registration-form">
         <div class="zz-form-grid">
           <div class="zz-form-group">
@@ -148,7 +144,13 @@
           </label>
         </div>
         
-        <button type="submit" class="zz-submit-btn" id="zzSubmitBtn">Create Account</button>
+        <div class="zz-submit-container">
+          <button type="submit" class="zz-submit-btn" id="zzSubmitBtn">Create Account</button>
+          
+          <!-- Messages positioned right after the button -->
+          <div id="zzSuccessMessage" class="zz-success-message"></div>
+          <div id="zzErrorMessage" class="zz-error-message"></div>
+        </div>
       </form>
       
       <div class="zz-login-link">
@@ -227,14 +229,27 @@
       const messageElement = document.getElementById(type === 'success' ? 'zzSuccessMessage' : 'zzErrorMessage');
       const otherElement = document.getElementById(type === 'success' ? 'zzErrorMessage' : 'zzSuccessMessage');
       
+      // Hide the other message first
       otherElement.classList.remove('zz-show');
+      otherElement.style.display = 'none';
       
+      // Show the current message with enhanced animation
       messageElement.textContent = message;
-      messageElement.classList.add('zz-show');
+      messageElement.style.display = 'block';
       
+      // Small delay to ensure display is set before animation
+      setTimeout(() => {
+        messageElement.classList.add('zz-show');
+      }, 10);
+      
+      // Auto hide after 8 seconds for success, 6 seconds for error
+      const hideDelay = type === 'success' ? 8000 : 6000;
       setTimeout(() => {
         messageElement.classList.remove('zz-show');
-      }, 5000);
+        setTimeout(() => {
+          messageElement.style.display = 'none';
+        }, 500); // Wait for fade transition
+      }, hideDelay);
     }
 
     function zzClearErrors() {
@@ -242,485 +257,16 @@
       inputs.forEach(input => input.classList.remove('zz-error'));
     }
 
+    function zzClearMessages() {
+      const successMessage = document.getElementById('zzSuccessMessage');
+      const errorMessage = document.getElementById('zzErrorMessage');
+      
+      successMessage.classList.remove('zz-show');
+      errorMessage.classList.remove('zz-show');
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+    }
+
     function zzValidateAge(birthDate) {
       const today = new Date();
-      const birth = new Date(birthDate);
-      const age = today.getFullYear() - birth.getFullYear();
-      const monthDiff = today.getMonth() - birth.getMonth();
-      
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-        age--;
-      }
-      
-      return age >= 13; // Minimum age requirement
-    }
-
-    // Password strength indicator
-    document.getElementById('zzPassword').addEventListener('input', function(e) {
-      const password = e.target.value;
-      const strengthContainer = document.getElementById('zzPasswordStrength');
-      const strengthBar = document.getElementById('zzStrengthBar');
-      const strengthText = document.getElementById('zzStrengthText');
-
-      if (password.length > 0) {
-        strengthContainer.classList.add('zz-show');
-        const strength = zzCheckPasswordStrength(password);
-        
-        strengthBar.className = 'zz-strength-bar ' + strength.class;
-        strengthText.textContent = strength.text;
-        strengthText.className = 'zz-strength-text';
-      } else {
-        strengthContainer.classList.remove('zz-show');
-      }
-    });
-
-    // Form submission handler
-    document.getElementById('zzRegistrationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      zzClearErrors();
-      
-      const formData = new FormData(e.target);
-      const userData = {};
-      
-      // Convert FormData to object
-      for (let [key, value] of formData.entries()) {
-        userData[key] = value;
-      }
-      
-      // Validation
-      let hasErrors = false;
-      
-      // Email validation
-      if (!zzIsValidEmail(userData.email)) {
-        document.getElementById('zzEmail').classList.add('zz-error');
-        zzShowMessage('Please enter a valid email address', 'error');
-        hasErrors = true;
-      }
-      
-      // Check if email already exists
-      if (registeredUsers.some(user => user.email.toLowerCase() === userData.email.toLowerCase())) {
-        document.getElementById('zzEmail').classList.add('zz-error');
-        zzShowMessage('This email address is already registered', 'error');
-        hasErrors = true;
-      }
-      
-      // Phone validation
-      if (!zzIsValidPhone(userData.phone)) {
-        document.getElementById('zzPhone').classList.add('zz-error');
-        zzShowMessage('Please enter a valid phone number', 'error');
-        hasErrors = true;
-      }
-      
-      // Age validation
-      if (!zzValidateAge(userData.birthDate)) {
-        document.getElementById('zzBirthDate').classList.add('zz-error');
-        zzShowMessage('You must be at least 13 years old to register', 'error');
-        hasErrors = true;
-      }
-      
-      // Password validation
-      const passwordStrength = zzCheckPasswordStrength(userData.password);
-      if (passwordStrength.score < 3) {
-        document.getElementById('zzPassword').classList.add('zz-error');
-        zzShowMessage('Password is too weak. Please use a stronger password', 'error');
-        hasErrors = true;
-      }
-      
-      // Confirm password validation
-      if (userData.password !== userData.confirmPassword) {
-        document.getElementById('zzConfirmPassword').classList.add('zz-error');
-        zzShowMessage('Passwords do not match', 'error');
-        hasErrors = true;
-      }
-      
-      // Terms acceptance
-      if (!userData.terms) {
-        zzShowMessage('Please accept the Terms of Service and Privacy Policy', 'error');
-        hasErrors = true;
-      }
-      
-      if (hasErrors) return;
-      
-      // Disable submit button
-      const submitBtn = document.getElementById('zzSubmitBtn');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Creating Account...';
-      
-      // Simulate API call
-      setTimeout(() => {
-        // Add user to registered users
-        userData.registrationDate = new Date().toISOString();
-        userData.id = Date.now();
-        registeredUsers.push(userData);
-        
-        // Reset form
-        document.getElementById('zzRegistrationForm').reset();
-        document.getElementById('zzPasswordStrength').classList.remove('zz-show');
-        
-        // Re-enable button
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Create Account';
-        
-        // Show success message
-        zzShowMessage(`Welcome to My Clothes, ${userData.firstName}! Your account has been created successfully. You can now start shopping!`, 'success');
-        
-        // Scroll to top to show success message
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        console.log('New user registered:', userData);
-        console.log('Total registered users:', registeredUsers.length);
-      }, 2000);
-    });
-
-   
-    registeredUsers.push(
-      {
-        id: 1,
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john@example.com',
-        registrationDate: '2025-01-25T10:30:00.000Z'
-      },
-      {
-        id: 2,
-        firstName: 'Sarah',
-        lastName: 'Smith',
-        email: 'sarah@example.com',
-        registrationDate: '2025-01-26T14:15:00.000Z'
-      }
-    );
-   // Store selected sizes for each product
-    let selectedSizes = {};
-    let cart = [];
-
-    function selectSize(button, productId, size) {
-      console.log('Size button clicked:', size, 'for product:', productId);
-      
-      // Find the product card
-      const productCard = button.closest('.Eproduct-card');
-      
-      // Remove selected class from all size buttons in this product
-      const sizeButtons = productCard.querySelectorAll('.Esize-btn');
-      sizeButtons.forEach(btn => {
-        btn.classList.remove('selected');
-      });
-      
-      // Add selected class to clicked button
-      button.classList.add('selected');
-      
-      // Store the selected size
-      selectedSizes[productId] = size;
-      
-      // Update the display - extract number from productId (product1 -> 1)
-      const productNumber = productId.replace('product', '');
-      const sizeDisplay = document.getElementById('sizeDisplay' + productNumber);
-      if (sizeDisplay) {
-        sizeDisplay.textContent = `Selected: ${size}`;
-        sizeDisplay.classList.add('selected');
-      }
-      
-      // Hide warning
-      const warning = document.getElementById('warning' + productNumber);
-      if (warning) {
-        warning.style.display = 'none';
-      }
-      
-      console.log('Selected sizes:', selectedSizes);
-    }
-
-    function addToCart(productName, price, imageUrl, productId) {
-      console.log('Add to cart clicked for:', productName);
-      
-      // Check if this product has size options
-      const productCard = document.querySelector(`a[href="#${productId}"]`).closest('.Eproduct-card');
-      const hasSizeOptions = productCard.querySelector('.Esize-options .Esize-btn');
-      
-      if (hasSizeOptions && !selectedSizes[productId]) {
-        console.log('No size selected, showing warning');
-        
-        // Extract number from productId
-        const productNumber = productId.replace('product', '');
-        
-        // Show warning
-        const warning = document.getElementById('warning' + productNumber);
-        if (warning) {
-          warning.style.display = 'block';
-        }
-        
-        // Change size display to show error
-        const sizeDisplay = document.getElementById('sizeDisplay' + productNumber);
-        if (sizeDisplay) {
-          sizeDisplay.textContent = 'Please select a size!';
-          sizeDisplay.style.background = '#ffe8e8';
-          sizeDisplay.style.color = '#d32f2f';
-        }
-        
-        return; // Don't add to cart
-      }
-      
-      // Create full product name with size if selected
-      let fullProductName = productName;
-      if (selectedSizes[productId]) {
-        fullProductName += ` (Size: ${selectedSizes[productId]})`;
-      }
-      
-      // Add item to cart array
-      cart.push({
-        name: fullProductName,
-        price: price,
-        image: imageUrl,
-        id: Date.now() // Simple unique ID
-      });
-      
-      console.log(`Adding to cart: ${fullProductName} - S${price}`);
-      
-      // Update cart display
-      updateCartDisplay();
-      
-      // Show success message
-      showSuccessMessage(`${fullProductName} added to cart!`);
-    }
-
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      updateCartDisplay();
-    }
-
-    function updateCartDisplay() {
-      const cartCount = document.getElementById('EcartCount');
-      const cartItems = document.getElementById('EcartItems');
-      const cartTotal = document.getElementById('EcartTotal');
-      
-      // Update cart count
-      cartCount.textContent = cart.length;
-      
-      // Update cart items
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<div class="Ecart-empty">Your cart is empty</div>';
-        cartTotal.textContent = 'Total: S$0.00';
-      } else {
-        cartItems.innerHTML = cart.map(item => `
-          <div class="Ecart-item">
-            <img src="${item.image}" alt="${item.name}">
-            <div class="Ecart-item-info">
-              <div class="Ecart-item-name">${item.name}</div>
-              <div class="Ecart-item-price">S${item.price.toFixed(2)}</div>
-            </div>
-            <button class="Ecart-item-remove" onclick="removeFromCart(${item.id})">Remove</button>
-          </div>
-        `).join('');
-        
-        // Calculate total
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        cartTotal.textContent = `Total: S${total.toFixed(2)}`;
-      }
-    }
-
-    function toggleCart() {
-      const cartDropdown = document.getElementById('EcartDropdown');
-      cartDropdown.classList.toggle('show');
-    }
-
-    function showSuccessMessage(message) {
-      const successMsg = document.getElementById('successMessage');
-      if (successMsg) {
-        successMsg.textContent = message || 'Item added to cart!';
-        successMsg.style.display = 'block';
-        
-        setTimeout(() => {
-          successMsg.style.display = 'none';
-        }, 3000);
-      }
-    }
-
-    function checkout() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-      
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      
-      // Show checkout confirmation
-      alert(`Checkout complete! Total: S${total.toFixed(2)}\n\nIn a real store, this would redirect to a payment processor.`);
-      
-      // Clear cart after successful checkout
-      cart = [];
-      updateCartDisplay();
-      toggleCart(); // Close the cart dropdown
-    }
-
-    // SEARCH AND FILTER FUNCTIONALITY
-    function filterProducts() {
-      const searchTerm = document.getElementById('EsearchInput').value.toLowerCase();
-      const categoryFilter = document.querySelector('input[name="cat"]:checked').value;
-      const genderFilter = document.getElementById('EgenderFilter').value;
-      const colorFilter = document.getElementById('EcolorFilter').value;
-      const styleFilter = document.getElementById('EstyleFilter').value;
-      const priceFilter = document.getElementById('priceSlider').value;
-      const sortBy = document.getElementById('EsortBy').value;
-      
-      const productCards = document.querySelectorAll('.Eproduct-card');
-      let visibleProducts = [];
-      
-      productCards.forEach(card => {
-        const title = card.querySelector('.Eproduct-title').textContent.toLowerCase();
-        const category = card.dataset.category;
-        const gender = card.dataset.gender;
-        const color = card.dataset.color;
-        const style = card.dataset.style;
-        const price = parseFloat(card.dataset.price);
-        const rating = parseFloat(card.dataset.rating);
-        
-        let shouldShow = true;
-        
-        // Search filter
-        if (searchTerm && !title.includes(searchTerm)) {
-          shouldShow = false;
-        }
-        
-        // Category filter
-        if (categoryFilter && category !== categoryFilter) {
-          shouldShow = false;
-        }
-        
-        // Gender filter
-        if (genderFilter && gender !== genderFilter) {
-          shouldShow = false;
-        }
-        
-        // Color filter
-        if (colorFilter && color !== colorFilter) {
-          shouldShow = false;
-        }
-        
-        // Style filter
-        if (styleFilter && style !== styleFilter) {
-          shouldShow = false;
-        }
-        
-        // Price filter
-        if (price > priceFilter) {
-          shouldShow = false;
-        }
-        
-        if (shouldShow) {
-          card.classList.remove('hidden');
-          visibleProducts.push({
-            element: card,
-            price: price,
-            rating: rating
-          });
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-      
-      // Sort products
-      if (sortBy && visibleProducts.length > 0) {
-        const productGrid = document.getElementById('EproductGrid');
-        
-        visibleProducts.sort((a, b) => {
-          switch (sortBy) {
-            case 'l': // Low to High
-              return a.price - b.price;
-            case 'h': // High to Low
-              return b.price - a.price;
-            case 'rating': // By Rating
-              return b.rating - a.rating;
-            default:
-              return 0;
-          }
-        });
-        
-        // Reorder DOM elements
-        visibleProducts.forEach(product => {
-          productGrid.appendChild(product.element);
-        });
-      }
-      
-      // Show/hide no results message
-      const noResults = document.getElementById('noResults');
-      if (visibleProducts.length === 0) {
-        noResults.style.display = 'block';
-      } else {
-        noResults.style.display = 'none';
-      }
-    }
-
-    function clearAllFilters() {
-      // Reset search
-      document.getElementById('EsearchInput').value = '';
-      
-      // Reset category to "All"
-      document.getElementById('All').checked = true;
-      
-      // Reset dropdowns
-      document.getElementById('EgenderFilter').value = '';
-      document.getElementById('EcolorFilter').value = '';
-      document.getElementById('EstyleFilter').value = '';
-      document.getElementById('EsortBy').value = '';
-      
-      // Reset price slider
-      document.getElementById('priceSlider').value = 100;
-      document.getElementById('EpriceDisplay').textContent = 'S$1 - S$100';
-      
-      // Show all products
-      const productCards = document.querySelectorAll('.Eproduct-card');
-      productCards.forEach(card => {
-        card.classList.remove('hidden');
-      });
-      
-      // Hide no results message
-      document.getElementById('noResults').style.display = 'none';
-    }
-
-    function updatePriceDisplay() {
-      const slider = document.getElementById('priceSlider');
-      const display = document.getElementById('EpriceDisplay');
-      display.textContent = `S$1 - S${slider.value}`;
-    }
-
-    // Close cart when clicking outside
-    document.addEventListener('click', function(event) {
-      const cartIcon = document.querySelector('.Ecart-icon');
-      const cartDropdown = document.getElementById('EcartDropdown');
-      
-      if (cartIcon && cartDropdown && !cartIcon.contains(event.target) && !cartDropdown.contains(event.target)) {
-        cartDropdown.classList.remove('show');
-      }
-    });
-
-    // Initialize when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      updateCartDisplay(); // Initialize cart display
-      
-      // Add event listeners for filters
-      document.getElementById('EsearchInput').addEventListener('input', filterProducts);
-      
-      // Category radio buttons
-      document.querySelectorAll('input[name="cat"]').forEach(radio => {
-        radio.addEventListener('change', filterProducts);
-      });
-      
-      // Filter dropdowns
-      document.getElementById('EgenderFilter').addEventListener('change', filterProducts);
-      document.getElementById('EcolorFilter').addEventListener('change', filterProducts);
-      document.getElementById('EstyleFilter').addEventListener('change', filterProducts);
-      document.getElementById('EsortBy').addEventListener('change', filterProducts);
-      
-      // Price slider
-      document.getElementById('priceSlider').addEventListener('input', function() {
-        updatePriceDisplay();
-        filterProducts();
-      });
-      
-      // Clear filters button
-      document.getElementById('EclearFilters').addEventListener('click', clearAllFilters);
-      
-      console.log('JavaScript loaded successfully with search and filters!');
-    });
-  </script>
-</body>
-</html>
+      const birth = new Date(birth
