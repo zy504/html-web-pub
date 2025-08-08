@@ -30,9 +30,11 @@
             <div class="Ecart-header">Shopping Cart</div>
             <div id="EcartItems"></div>
             <div class="Ecart-total" id="EcartTotal">Total: S$0.00</div>
-	         <button style="background-color: #A9A9A9; color: white; padding: 10px 10px; border: none; border-radius: 4px; font-size: 10px; font-weight: 350; text-align:center; cursor: pointer; transition: background-color 0.3s;">
+			  <div style="text-align: center;">
+	         <button style="background-color: #A9A9A9; color: white; padding: 10px 10px; border: none; border-radius: 4px; font-size: 10px; font-weight: 350;  cursor: pointer; transition: background-color 0.3s;">
 			  <a href="order.html" class="Echeckout-btn">Proceed to Checkout</a>
 			 </button>
+			  </div>
 			  <script>
 function proceedToCheckout() {
     localStorage.setItem('cartData', JSON.stringify(cartItems));
