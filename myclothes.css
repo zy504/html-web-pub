@@ -127,15 +127,13 @@
     .product-image {
       width: 100%;
       height: 300px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-      background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+      overflow: hidden; /* Ensures nothing spills out */
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
+      background: linear-gradient(45deg, #f0f0f0, #e0e0e0); /* fallback for empty */
     }
-
     .product-card:hover .product-image {
       transform: scale(1.05);
     }
@@ -1593,6 +1591,18 @@
 
 .Esize-btn {
   transition: all 0.3s;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 
